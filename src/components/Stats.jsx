@@ -22,29 +22,7 @@ import steel from "../img/icons/steel.svg";
 import water from "../img/icons/water.svg";
 
 
-
-const typeSelection = [
-  {type: 'grass', scheme: 'green', svg: grass},
-  {type: 'bug', scheme: 'yellowgreen', svg: bug},
-  {type: 'dragon', scheme: 'orangered', svg: dragon},
-  {type: 'electric', scheme: 'yellow', svg: electric},
-  {type: 'fairy', scheme: 'pink', svg: fairy},
-  {type: 'fighting', scheme: 'orangered', svg: fighting},
-  {type: 'fire', scheme: 'green', svg: fire},
-  {type: 'flying', scheme: 'green', svg: flying},
-  {type: 'ghost', scheme: 'green', svg: ghost},
-  {type: 'ground', scheme: 'green', svg: ground},
-  {type: 'ice', scheme: 'green', svg: ice},
-  {type: 'normal', scheme: 'green', svg: normal},
-  {type: 'poison', scheme: 'green', svg: poison},
-  {type: 'psychic', scheme: 'green', svg: psychic},
-  {type: 'rock', scheme: 'green', svg: rock},
-  {type: 'steel', scheme: 'green', svg: steel},
-  {type: 'water', scheme: 'green', svg: water},
-]
-
 function Stats(props) {
-  // console.log(props.stats)
   const container = {
     display: "flex",
     height: "100vh",
@@ -62,8 +40,8 @@ function Stats(props) {
           <Row>
             <h1>Base stats:</h1>
             {/* <grass fill='green' stroke='black'/> */}
-              {/* <img
-
+              <img
+                src={props.type === 'grass' ? grass : props.type === 'fire' ? fire : props.type === 'bug' ? bug : props.type === 'dark' ? dark : props.type === 'dragon' ? dragon : props.type === 'electric' ? electric : props.type === 'electric' ? electric : props.type === 'fairy' ? fairy : props.type === 'fighting' ? fighting : props.type === 'flying' ? flying : props.type === 'ghost' ? ghost : props.type === 'ground' ? ground : props.type === 'ice' ? ice : props.type === 'poison' ? poison : props.type === 'psychic' ? psychic : props.type === 'rock' ? rock : props.type === 'steel' ? steel : props.type === 'water' ? water : normal}
                 alt="type"
                 style={{
                   height: '100px',
@@ -71,8 +49,17 @@ function Stats(props) {
                   fill: 'green',
                   stroke: 'green'
                 }}
-              /> */}
-              <GenerateTypeAndScheme type={props?.type}/>
+              />
+              <img
+                src={props.type2 && props.type2 === 'grass' ? grass : props.type2 === 'fire' ? fire : props.type2 === 'bug' ? bug : props.type2 === 'dark' ? dark : props.type2 === 'dragon' ? dragon : props.type2 === 'electric' ? electric : props.type2 === 'electric' ? electric : props.type2 === 'fairy' ? fairy : props.type2 === 'fighting' ? fighting : props.type2 === 'flying' ? flying : props.type2 === 'ghost' ? ghost : props.type2 === 'ground' ? ground : props.type2 === 'ice' ? ice : props.type2 === 'poison' ? poison : props.type2 === 'normal' ? normal : props.type2 === 'psychic' ? psychic : props.type2 === 'rock' ? rock : props.type2 === 'steel' ? steel : props.type2 === 'water' ? water : null}
+                alt="type"
+                style={{
+                  height: '100px',
+                  width: '100px',
+                  fill: 'green',
+                  stroke: 'green'
+                }}
+              />
           </Row>
           <Row>
             <div
@@ -109,34 +96,5 @@ function Stats(props) {
 }
 
 
-function GenerateTypeAndScheme({type}) {
-  const [pokeType, setPokeType] = useState(new Set([]));
-  useEffect(() => {
-    typeSelection.forEach(item => {
-      // console.log(type[0])
-      if(item.type === type[0]?.type?.name){
-        setPokeType(pokeType.add(item.svg))
-      }else if(item.type === type[1]?.type?.name) {
-        setPokeType(pokeType.add(item.svg))
-      }
-    }, [type])
-
-    return () => {
-      setPokeType(new Set([]))
-    }    
-    //
-  }, [type])
-
-  return (
-    <>
-    {console.log(pokeType.values())}
-      {
-        Array.from(pokeType).map(item => {
-          return <img src={item} alt="type" key={item.toString()} style={{height: '100px', width: '100px'}}/>
-        })
-      }
-    </>
-  )
-}
 
 export default Stats;

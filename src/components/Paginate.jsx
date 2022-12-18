@@ -17,6 +17,7 @@ function Paginate( props ) {
         {pokeId
           .filter((pokeId, index) => index <= props.increase && index >= props.decrease)
           .map((id, index) => {
+            
             return (
               <Button
                 variant="outline-dark"
@@ -26,12 +27,11 @@ function Paginate( props ) {
                 onClick={()=>props.onIDClick(id)}
                 active={id == props.pokeName}
                >
-                {/* {console.log(index)} */}
                 {id}
               </Button>
             );
           })}
-        <Button variant="outline-dark" onClick={props.onIncrease}>
+        <Button variant="outline-dark" onClick={() => props.onIncrease()}>
           <AiFillCaretRight></AiFillCaretRight>
         </Button>
       </div>
