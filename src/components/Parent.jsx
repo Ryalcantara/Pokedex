@@ -14,8 +14,6 @@ function Parent() {
   let [paginate, setPaginate] = useState(null);
   let [increase, setIncrease] = useState(5);
   let [decrease, setDecrease] = useState(0);
-  let [type, setType] = useState(null);
-  let [type2, setType2] = useState(null);
 
   
 
@@ -43,17 +41,9 @@ function Parent() {
     .then((data) => {
       // console.log(data)
       setCurrentPage(data);
-      setType(currentPage?.types[0].type.name)
-      if(data.types[1] === undefined) {
-         setType2(type2 = currentPage?.types[1].type.name) 
-        //  console.log(type2)
-      }else{
-        setType2(null)
-        // console.log(type2)
-      }
         
       });
-  }, [id, type, type2]);
+  }, [id]);
   
   useEffect(() => {
     fetch(`https://pokeapi.co/api/v2/pokemon?limit=${increase}&offset=${decrease}`)
@@ -84,7 +74,7 @@ function Parent() {
           className="d-flex justify-content-between"
           style={{ margin: "0 -6rem" }}
         >
-          {currentPage && <Stats stats={currentPage.stats} type={type} type2={type2}/>}
+          {currentPage && <Stats stats={currentPage.stats} type={currentPage?.types[0].type.name} type2={currentPage?.types[1] && currentPage?.types[1].type.name}/>}
         </Col>
       </Row>
           {paginate && (

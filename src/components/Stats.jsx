@@ -40,7 +40,7 @@ function Stats(props) {
           <Row>
             <h1>Base stats:</h1>
             {/* <grass fill='green' stroke='black'/> */}
-              <img
+              {props.type && <img
                 src={props.type === 'grass' ? grass : props.type === 'fire' ? fire : props.type === 'bug' ? bug : props.type === 'dark' ? dark : props.type === 'dragon' ? dragon : props.type === 'electric' ? electric : props.type === 'electric' ? electric : props.type === 'fairy' ? fairy : props.type === 'fighting' ? fighting : props.type === 'flying' ? flying : props.type === 'ghost' ? ghost : props.type === 'ground' ? ground : props.type === 'ice' ? ice : props.type === 'poison' ? poison : props.type === 'psychic' ? psychic : props.type === 'rock' ? rock : props.type === 'steel' ? steel : props.type === 'water' ? water : normal}
                 alt="type"
                 style={{
@@ -49,8 +49,8 @@ function Stats(props) {
                   fill: 'green',
                   stroke: 'green'
                 }}
-              />
-              <img
+              />}
+              {props.type2 && <img
                 src={props.type2 && props.type2 === 'grass' ? grass : props.type2 === 'fire' ? fire : props.type2 === 'bug' ? bug : props.type2 === 'dark' ? dark : props.type2 === 'dragon' ? dragon : props.type2 === 'electric' ? electric : props.type2 === 'electric' ? electric : props.type2 === 'fairy' ? fairy : props.type2 === 'fighting' ? fighting : props.type2 === 'flying' ? flying : props.type2 === 'ghost' ? ghost : props.type2 === 'ground' ? ground : props.type2 === 'ice' ? ice : props.type2 === 'poison' ? poison : props.type2 === 'normal' ? normal : props.type2 === 'psychic' ? psychic : props.type2 === 'rock' ? rock : props.type2 === 'steel' ? steel : props.type2 === 'water' ? water : null}
                 alt="type"
                 style={{
@@ -59,7 +59,7 @@ function Stats(props) {
                   fill: 'green',
                   stroke: 'green'
                 }}
-              />
+              />}
           </Row>
           <Row>
             <div
