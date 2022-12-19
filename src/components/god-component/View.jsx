@@ -1,8 +1,10 @@
 import { useEffect, useState, useContext } from "react";
 import { Scheme } from "./SchemeProvider";
-import BuildTypes from "./RenderTypes";
+import Sprite from "./RenderSprite";
+import Stats from "./RenderStats";
+import style from "./styles/view.module.css";
 //
-export default function _({ url }) {
+export default function View({ url }) {
   const [data, setData] = useState(null);
   const scheme = useContext(Scheme);
   // fetch data
@@ -49,15 +51,29 @@ export default function _({ url }) {
   //if data exists then render
   if (data) {
     return (
-      <>
-        <p style={{ fontFamily: "ungai", fontSize: "1.5em" }}>{data.name}</p>
-        <img src={data.image} alt={data.name} />
-        <BuildTypes types={data.types} />{" "}
-        {/**Build Type since it depends on client types */}
-      </>
+      <section className={style.section}>
+        <div
+          className={style["card-wrapper"]}
+          style={{ backgroundColor: scheme.scheme.color }}
+        >
+          <div className={style.desaturate} />
+          <p className={style["backdrop-text"]}>{data.name}</p>
+          <div className={style.content}>
+            <Sprite data={data} />
+            <Stats data={data} />
+          </div>
+        </div>
+      </section>
     );
   } else {
-    return <p>Error Rendering, ...</p>;
+    return (
+      <section
+        className={style.section}
+        style={{ display: "grid", placeItems: "center" }}
+      >
+        <p>Loading...</p>;
+      </section>
+    );
   }
 }
 

@@ -1,0 +1,41 @@
+.section {
+    position: static;
+    padding: 25px;
+}
+
+.card-wrapper{
+    border-radius: 18px;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.desaturate {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    /* background-color: rgba(200, 200, 200, 0.0) */
+}
+
+.backdrop-text {
+    color: rgba(0, 0, 0, 0.2);
+    font-family: 'ungai';
+    font-size: 6em;
+    padding: .1em;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+.content {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

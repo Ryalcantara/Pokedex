@@ -1,0 +1,38 @@
+.main-view {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100%;
+    position: relative;   
+}
+
+.banner {
+    padding: 15px;
+}
+
+.title {
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+.image-wrapper {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.image {
+    height: 100%;
+    width: 100%;
+    max-width: 300px;
+    max-height: 200px;
+    object-fit: scale-down;
+    object-position: center;
+}
+
+.bottom-section {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

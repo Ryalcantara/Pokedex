@@ -1,0 +1,26 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    overflow: auto;
+}
+
+.divider {
+    height: 90%;
+    width: 10px;
+    border-radius: 8px;
+}
+
+.content{
+    height: 100%;
+}
+.title{
+    padding: 15px 5px;
+    font-weight: bold;
+}
+
+.items{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}

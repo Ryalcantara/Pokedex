@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'ungai';
+    src: url('/public/Ungai.ttf');
+}
+
+:root, body, #root{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#root, #root .body-tint{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+#root .body-tint {
+    background-color: rgba(200, 200, 200, 0.5);
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.nav::-webkit-scrollbar {
+    height: 10px;
+}
+
+*::-webkit-scrollbar {
+    width: 1rem;
+    height: 1rem;
+    background-color: transparent;
+}
+
+
+
+*::-webkit-scrollbar-thumb {
+    min-width: 3rem;
+    min-height: 3rem;
+    background-color: rgba(0, 0, 0, 0.15);
+    border: 0.4rem solid transparent;
+    -moz-background-clip: content;
+
+    -webkit-background-clip: content;
+
+    background-clip: content-box;
+    border-radius: 1rem;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+    border-color: transparent;
+  }
+  
+  
+  
+*::-webkit-scrollbar-corner {
+    background-color: transparent;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.25) #ffffff;
+}

@@ -1,7 +1,4 @@
-@font-face {
-  font-family: 'ungai';
-  src: url('/public/Ungai.ttf');
-}
+
 :root, body, #root{
   height: 100%;
   width: 100%;

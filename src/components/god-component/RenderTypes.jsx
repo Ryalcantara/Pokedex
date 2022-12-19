@@ -39,6 +39,23 @@ const typeSprites = [
   { name: "steel", svg: steel },
   { name: "water", svg: water },
 ];
+
+const style = {
+  image: {
+    borderRadius: "8px",
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    height: "45px",
+    width: "45px",
+    objectFit: "contain",
+    padding: "8px",
+  },
+  wrapper: {
+    display: "flex",
+    gap: "8px",
+    alignItems: "center",
+  },
+};
+
 export default function _({ types }) {
   //(performance optimized) wrapped type picker
   const findType = useCallback(
@@ -49,15 +66,16 @@ export default function _({ types }) {
   );
   ///
   return (
-    <div>
+    <div style={style.wrapper}>
       {types?.map((item) => {
         const type = findType(item.name);
         return (
           <img
-            style={{ height: "56px", width: "56px" }}
+            style={style.image}
             src={type?.svg}
             alt={item.name}
             key={item.name}
+            title={item.name}
           />
         );
       })}

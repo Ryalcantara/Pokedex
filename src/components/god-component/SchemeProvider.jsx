@@ -1,10 +1,10 @@
 import { createContext, useState, useEffect } from "react";
+import "./styles/styles.css";
 
 export const Scheme = createContext({ scheme: "#d2cecb", setScheme: () => {} });
 function SchemeProvider(props) {
   const [scheme, setScheme] = useState({
     color: "#d2cecb",
-    pokemonName: "nothing",
   });
 
   function standardize_color(color) {
@@ -18,15 +18,7 @@ function SchemeProvider(props) {
   }, [scheme]);
   return (
     <Scheme.Provider value={{ scheme, setScheme }}>
-      <div
-        style={{
-          height: "inherit",
-          width: "inherit",
-          backgroundColor: "rgba(255, 255, 255, 0.3)",
-        }}
-      >
-        {props.children}
-      </div>
+      <div className="body-tint">{props.children}</div>
     </Scheme.Provider>
   );
 }
