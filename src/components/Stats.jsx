@@ -25,7 +25,6 @@ import water from "../img/icons/water.svg";
 function Stats(props) {
   const container = {
     display: "flex",
-    height: "100vh",
     marginTop: "-2rem",
   };
 

@@ -9,11 +9,10 @@ function Paginate( props ) {
   
 
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{marginTop: '-10rem', paddingBottom: '20px'}}>
+    <div className="d-flex justify-content-center align-items-center"
+    >
       <div>
-        <Button variant="outline-dark"  style={{ marginRight: "1rem"  }} onClick={props.onDecrease}>
-          <AiFillCaretLeft></AiFillCaretLeft>
-        </Button>
+        
         {pokeId
           .filter((pokeId, index) => index <= props.increase && index >= props.decrease)
           .map((id, index) => {
@@ -31,9 +30,7 @@ function Paginate( props ) {
               </Button>
             );
           })}
-        <Button variant="outline-dark" onClick={() => props.onIncrease()}>
-          <AiFillCaretRight></AiFillCaretRight>
-        </Button>
+
       </div>
     </div>
   );
