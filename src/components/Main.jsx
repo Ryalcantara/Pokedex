@@ -1,27 +1,27 @@
-import {React} from "react";
-import { Container, Row } from "react-bootstrap";
+import { React } from "react";
 
 function Main(props) {
-
-
-
-
   return (
+    <div style={{ padding: "1rem",}} >
       <div>
-        <Container>
-          <Row>
-            <h4>#{props.pokeId}</h4>
-          </Row>
-          <Row>
-            <h1 >{props.pokeName}</h1>
-          </Row>
-        </Container>
-        <Container>
-        <Row>
-          <img style={{width: '500px', height: '500px'}} src={props.sprites} alt={props.pokeName}/>
-          </Row>
-        </Container>
+        <div className="row">
+          <h4>#{props.pokeId}</h4>
+        </div>
+        <div className="row">
+          <h1>{props.pokeName}</h1>
+        </div>
       </div>
+      <div>
+        <h1 id="overlay">{props.pokeName}</h1>
+        <div className="row">
+          <img
+            style={{ width: "450px", height: "45 0px" }}
+            src={props.sprites}
+            alt={props.pokeName}
+          />
+        </div>
+      </div>
+    </div>
   );
 }
 
