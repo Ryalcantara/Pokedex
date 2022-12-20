@@ -1,6 +1,7 @@
 import style from "./styles/topbar.module.css";
+import Search from "./Search";
 
-export default function Header() {
+export default function Header({ setActivePokemon }) {
   return (
     <header className={style.header}>
       <div className={style.leading}>
@@ -9,7 +10,9 @@ export default function Header() {
           POKEDEX
         </span>
       </div>
-      <div className="trailing">{/**SEARCH BAR */}</div>
+      <div className="trailing">
+        <Search setActivePokemon={setActivePokemon} />
+      </div>
     </header>
   );
 }

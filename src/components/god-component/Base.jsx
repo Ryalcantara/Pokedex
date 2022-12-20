@@ -26,7 +26,7 @@ export default function Main() {
 
   return (
     <div className={style.wrapper}>
-      <Header />
+      <Header setActivePokemon={setPokemon} />
       <ErrorHandler fallback={<p>Loading...</p>}>
         <View url={pokemon.url} />
       </ErrorHandler>

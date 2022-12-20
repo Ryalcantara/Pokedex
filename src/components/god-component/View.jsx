@@ -71,7 +71,7 @@ export default function View({ url }) {
         className={style.section}
         style={{ display: "grid", placeItems: "center" }}
       >
-        <p>Loading...</p>;
+        <p>Loading...</p>
       </section>
     );
   }
