@@ -1,24 +1,26 @@
-*{
+* {
   font-family: 'JetBrains Mono';
   text-transform: uppercase;
 }
-body{
-  background-color: #d2cecb;  
+
+body {
+  background-color: #d2cecb;
 }
 
-.badgeContainer{
+.badgeContainer {
   margin-top: 2rem;
   font-size: 30px;
 }
 
 @font-face {
- 
-  font-family: "electroharmonix";   /*Can be any text*/
+
+  font-family: "electroharmonix";
+  /*Can be any text*/
   src: local("electroharmonix"),
     url("./fonts/electroharmonix.ttf") format("ttf");
 }
 
-#overlay{
+#overlay {
   font-family: 'electro';
   font-size: 5rem;
   position: absolute;
@@ -26,4 +28,3 @@ body{
   filter: opacity(50%);
 
 }
-

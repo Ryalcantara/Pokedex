@@ -1,18 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
-import Parent from "./components/Parent";
-
-
-
-
+import SchemeProvider from './components/god-component/SchemeProvider'
+import GodComponent from './components/god-component/Base'
 
 function App() {
   return (
-    <div >
-      {/* <header className="App-header"></header> */}
-
-      <Parent ></Parent>
-    </div>
+    <SchemeProvider>
+      <GodComponent />
+    </SchemeProvider>
   );
 }
 

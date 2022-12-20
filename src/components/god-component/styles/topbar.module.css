@@ -1,0 +1,24 @@
+/*
+    TOP MAIN BAR
+*/
+.header {
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.page-logo{
+    height: 28px;
+    width: 28px;
+}
+.page-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}

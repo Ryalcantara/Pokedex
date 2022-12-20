@@ -1,10 +1,10 @@
 import { React } from "react";
 import Button from "react-bootstrap/Button";
 
-function Paginate( props ) {
+function Paginate(props) {
   let pokeId = props.paginate.map((pokemon, index) => pokemon.name);
 
-  
+
 
   return (
     <div className="d-flex justify-content-center align-items-center"
@@ -22,7 +22,7 @@ function Paginate( props ) {
                 size="sm"
                 style={{ margin: "0 2rem 0 0", borderRadius: '20px'}}
                 key={id}
-                onClick={()=>props.onIDClick(id)}
+                onClick={() => props.onIDClick(id)}
                 active={id == props.pokeName}
                >
                 {id}
