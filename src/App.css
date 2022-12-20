@@ -10,8 +10,14 @@ body{
   font-size: 30px;
 }
 
+@font-face {
+ 
+}
+
 #overlay{
-  font-family: 'Electroharmonix';
+  font-family: "Medium";   /*Can be any text*/
+  src: local("electroharmonix"),
+    url("./fonts/electroharmonix.ttf") format("ttf");
   font-size: 5rem;
   position: absolute;
   z-index: 100;

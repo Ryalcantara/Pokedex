@@ -4,8 +4,6 @@ import { React, useState, useEffect } from "react";
 import Main from "./Main";
 import Stats from "./Stats";
 import Paginate from "./Paginate";
-import ColorSchemeProvider from "./ColorSchemeProvider";
-import Carousel from 'react-bootstrap/Carousel';
 
 
 function Parent() {
@@ -39,6 +37,7 @@ function Parent() {
       })
       .then((data) => {
         setCurrentPage(data);
+        console.log(data)
         setLoading(false);
       });
 
@@ -48,14 +47,9 @@ function Parent() {
       })
       .then((data) => {
         setBackground(data.color.name);
-        // setLoading(false)
-        console.log(data.color.name);
       });
   }, [id]);
 
-  const fetchPokemon = async () => {
-    const color = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-  };
 
   useEffect(() => {
     fetch(
@@ -72,7 +66,7 @@ function Parent() {
 
   return (
     <div id='background'
-    style={{backgroundColor: `${background}`, WebkitBackdropFilter: 'brightness(50%)', height: '100vh'}}
+    style={{backgroundColor: `${background}`, filter: 'brightness(100%)', zIndex: '-100', height: '100vh'}}
     
     >
       {loading && <div>Loading....</div>}
