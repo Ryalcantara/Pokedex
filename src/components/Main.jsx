@@ -1,35 +1,27 @@
 import { React } from "react";
-import { Container, Row } from "react-bootstrap";
+import '../fonts/electroharmonix.ttf'
 
 function Main(props) {
-  const divStyle = {
-    marginLeft: "2rem",
-    marginTop: "-3rem",
-    paddingTop: "6rem",
-  };
-
   return (
-    <div
-      className="d-flex justify-content-center align-items-center"
-      style={divStyle}
-    >
-      <Container>
-        <Row>
-          <h4>{props.pokeId}</h4>
-        </Row>
-        <Row>
-          <h1 style={{ fontSize: "80px" }}>{props.pokeName}</h1>
-        </Row>
-      </Container>
-      <Container>
-        <Row>
+    <div style={{ padding: "1rem",}} >
+      <div>
+        <div className="row">
+          <h4>#{props.pokeId}</h4>
+        </div>
+        <div className="row">
+          <h1>{props.pokeName}</h1>
+        </div>
+      </div>
+      <div>
+        <h1 id="overlay" style={{fontFamily: 'electroharmonix'}}>{props.pokeName}</h1>
+        <div className="row">
           <img
-            style={{ width: "500px", height: "300px", marginTop: "5rem" }}
+            style={{ width: "450px", height: "45 0px" }}
             src={props.sprites}
             alt={props.pokeName}
           />
-        </Row>
-      </Container>
+        </div>
+      </div>
     </div>
   );
 }
