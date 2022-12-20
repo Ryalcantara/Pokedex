@@ -1,14 +1,10 @@
 import { useContext } from "react";
 import { Scheme } from "./SchemeProvider";
+import { Pokemon } from "./Base";
 import style from "./styles/nav.module.css";
 
-export default function Nav({
-  result,
-  next,
-  previous,
-  currentPokemon,
-  setCurrentPokemon,
-}) {
+export default function Nav({ result, next, previous }) {
+  const pokemonContext = useContext(Pokemon);
   const scheme = useContext(Scheme);
   return (
     <nav className={style.nav}>
@@ -24,18 +20,20 @@ export default function Nav({
           <span
             className={style["nav-item"]}
             key={item.url}
-            onClick={() =>
-              setCurrentPokemon({ name: item.name, url: item.url })
+            onClick={
+              () =>
+                pokemonContext.setPokemon({ name: item.name, url: item.url })
+              // setCurrentPokemon({ name: item.name, url: item.url })
             } //change active pokemon
             style={{
               backgroundColor:
-                item.name === currentPokemon.name
+                item.name === pokemonContext.pokemon.name
                   ? scheme.scheme.color === "white"
                     ? "lightgray"
                     : "white"
                   : "rgba(200, 200, 200, 0.3)",
               color:
-                item.name === currentPokemon.name
+                item.name === pokemonContext.pokemon.name
                   ? scheme.scheme.color === "white"
                     ? "gray"
                     : scheme.scheme.color

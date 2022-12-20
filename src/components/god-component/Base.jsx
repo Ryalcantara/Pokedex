@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import Header from "./Header";
 import View from "./View";
 import ErrorHandler from "./ErrorBoundary";
@@ -7,7 +7,7 @@ import usePokePaginate from "./usePaginate";
 import style from "./styles/base.module.css";
 
 //
-
+export const Pokemon = createContext({ pokemon: {}, setPokemon: () => {} });
 export default function Main() {
   //see (usePaginate.js) to view full description of this (custom hooks)
   const [result, previous, next] = usePokePaginate(
@@ -25,20 +25,16 @@ export default function Main() {
   }, [result]);
 
   return (
-    <div className={style.wrapper}>
-      <Header setActivePokemon={setPokemon} />
-      <ErrorHandler fallback={<p>Loading...</p>}>
-        <View url={pokemon.url} />
-      </ErrorHandler>
-      <ErrorHandler fallback={<p>loading...</p>}>
-        <Pagination
-          result={result}
-          next={next}
-          previous={previous}
-          currentPokemon={pokemon}
-          setCurrentPokemon={setPokemon}
-        />
-      </ErrorHandler>
-    </div>
+    <Pokemon.Provider value={{ pokemon, setPokemon }}>
+      <div className={style.wrapper}>
+        <Header />
+        <ErrorHandler fallback={<p>Loading...</p>}>
+          <View url={pokemon.url} />
+        </ErrorHandler>
+        <ErrorHandler fallback={<p>loading...</p>}>
+          <Pagination result={result} next={next} previous={previous} />
+        </ErrorHandler>
+      </div>
+    </Pokemon.Provider>
   );
 }

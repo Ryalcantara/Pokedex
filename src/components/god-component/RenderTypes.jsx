@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useCallback } from "react";
 
 import bug from "../../img/icons/bug.svg";
 import dark from "../../img/icons/dark.svg";

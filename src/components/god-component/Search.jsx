@@ -1,14 +1,14 @@
 import usePokeSearch from "./useSearch";
-import { useState, useRef } from "react";
+import { useState, useContext } from "react";
+import { Pokemon } from "./Base";
 import style from "./styles/search.module.css";
 
-export default function Search({ setActivePokemon }) {
+export default function Search() {
+  const pokemonContext = useContext(Pokemon);
   const [searchQuery, setSearchQuery] = useState("");
   const [result, search] = usePokeSearch(
     "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0"
   );
-
-  const inputRef = useRef(null);
 
   function onSearch(e) {
     setSearchQuery(e.target.value);
@@ -23,10 +23,12 @@ export default function Search({ setActivePokemon }) {
           value={searchQuery}
           className={style.input}
           placeholder="Search Pokemon"
-          ref={inputRef}
         />
         {searchQuery.length > 0 ? (
-          <BuildResult data={result} setActivePokemon={setActivePokemon} />
+          <BuildResult
+            data={result}
+            setActivePokemon={pokemonContext.setPokemon}
+          />
         ) : null}
       </div>
     </>
