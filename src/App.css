@@ -1,5 +1,6 @@
 *{
   font-family: 'JetBrains Mono';
+  text-transform: uppercase;
 }
 body{
   background-color: #d2cecb;  
@@ -12,12 +13,13 @@ body{
 
 @font-face {
  
+  font-family: "electroharmonix";   /*Can be any text*/
+  src: local("electroharmonix"),
+    url("./fonts/electroharmonix.ttf") format("ttf");
 }
 
 #overlay{
-  font-family: "Medium";   /*Can be any text*/
-  src: local("electroharmonix"),
-    url("./fonts/electroharmonix.ttf") format("ttf");
+  font-family: 'electro';
   font-size: 5rem;
   position: absolute;
   z-index: 100;

@@ -25,7 +25,9 @@ function Stats(props) {
   const container = {
     borderLeft: "solid #fcfcf7",
     padding: '1rem',
-    margin: '-1rem'
+    margin: '-1rem',
+    // borderRadius: '20px',
+    // backgroundColor: 'rgba(0,0,0, 0.5)',
   };
 
   return (
@@ -83,7 +85,11 @@ function Stats(props) {
                   width: "100px",
                   fill: "green",
                   stroke: "green",
+                  borderRadius: '20px',
+                  backgroundColor: 'rgba(0,0,0, 0.5)',
+                  margin: '0 1rem'
                 }}
+                title={props.type}
               />
             )}
             {props.type2 && (
@@ -135,7 +141,10 @@ function Stats(props) {
                   width: "100px",
                   fill: "green",
                   stroke: "green",
+                  borderRadius: '20px',
+                  backgroundColor: 'rgba(0,0,0, 0.5)',
                 }}
+                title={props.type2}
               />
             )}
           </div>

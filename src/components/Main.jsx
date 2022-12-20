@@ -13,7 +13,7 @@ function Main(props) {
         </div>
       </div>
       <div>
-        <h1 id="overlay" style={{fontFamily: 'electroharmonix.ttff'}}>{props.pokeName}</h1>
+        <h1 id="overlay" style={{fontFamily: 'electroharmonix'}}>{props.pokeName}</h1>
         <div className="row">
           <img
             style={{ width: "450px", height: "45 0px" }}
