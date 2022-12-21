@@ -1,5 +1,4 @@
 import Button from "react-bootstrap/Button";
-import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { React, useState, useEffect } from "react";
 import Main from "./Main";
 import Stats from "./Stats";
@@ -12,7 +11,6 @@ import Body from "./Body";
 function Parent() {
   let [currentPage, setCurrentPage] = useState(null);
   let [id, setId] = useState(1);
-  let [paginate, setPaginate] = useState(null);
   let [increase, setIncrease] = useState(5);
   let [decrease, setDecrease] = useState(0);
   let [loading, setLoading] = useState(true);
@@ -20,16 +18,6 @@ function Parent() {
 
   const idClick = (poke) => {
     setId((id = poke));
-  };
-
-  const pagePlus = (prev) => {
-    setIncrease(increase + 5);
-    setDecrease(decrease + 5);
-  };
-
-  const pageMinus = () => {
-    setIncrease(increase === 5 ? (increase = 5) : increase - 5);
-    setDecrease(decrease === 0 ? (decrease = 0) : decrease - 5);
   };
 
   const keyPlus = (event) => {
@@ -52,7 +40,6 @@ function Parent() {
       })
       .then((data) => {
         setCurrentPage(data);
-        console.log(data);
         setLoading(false);
       });
 
@@ -65,19 +52,17 @@ function Parent() {
       });
   }, [id]);
 
-  useEffect(() => {
-    document.addEventListener("keydown", keyPlus);
+  // useEffect(() => {
 
-    fetch(
-      `https://pokeapi.co/api/v2/pokemon?limit=${increase}&offset=${decrease}`
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setPaginate(data.results);
-      });
-  }, [increase, decrease]);
+  //   fetch(
+  //     `https://pokeapi.co/api/v2/pokemon?limit=${increase}&offset=${decrease}`
+  //   )
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //     });
+  // }, [increase, decrease]);
 
   return (
     <div
@@ -99,73 +84,24 @@ function Parent() {
         {loading && <div>Loading....</div>}
 
         <div className="d-flex justify-content-around align-items-center">
-          <div>
-            <Button variant="outline-dark" onClick={pageMinus}>
-              <AiFillCaretLeft></AiFillCaretLeft>
-            </Button>
-          </div>
+          
          <Body currentPage={currentPage} background={background}/>
 
-          <div>
-            <Button variant="outline-dark" onClick={pagePlus}>
-              <AiFillCaretRight></AiFillCaretRight>
-            </Button>
-          </div>
         </div>
         <div>
-          {paginate && (
+
             <Paginate
-              paginate={paginate}
-              increase={increase}
-              decrease={decrease}
-              pokeName={currentPage.name}
-              onIncrease={() => pagePlus(increase)}
-              onDecrease={() => pageMinus(decrease)}
+            
+              // increase={increase}
+              // decrease={decrease}
+              // pokeName={currentPage.name}
               onIDClick={(something) => idClick(something)}
             />
-          )}
+
         </div>
       </div>
     </div>
-    //   <Carousel>
-    //   <Carousel.Item>
-    //     <img
-    //       className="d-block w-100"
-    //       src="holder.js/800x400?text=First slide&bg=373940"
-    //       alt="First slide"
-    //     />
-    //     <Carousel.Caption>
-    //       <h3>First slide label</h3>
-    //       <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    //     </Carousel.Caption>
-    //   </Carousel.Item>
-    //   <Carousel.Item>
-    //     <img
-    //       className="d-block w-100"
-    //       src="holder.js/800x400?text=Second slide&bg=282c34"
-    //       alt="Second slide"
-    //     />
 
-    //     <Carousel.Caption>
-    //       <h3>Second slide label</h3>
-    //       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    //     </Carousel.Caption>
-    //   </Carousel.Item>
-    //   <Carousel.Item>
-    //     <img
-    //       className="d-block w-100"
-    //       src="holder.js/800x400?text=Third slide&bg=20232a"
-    //       alt="Third slide"
-    //     />
-
-    //     <Carousel.Caption>
-    //       <h3>Third slide label</h3>
-    //       <p>
-    //         Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-    //       </p>
-    //     </Carousel.Caption>
-    //   </Carousel.Item>
-    // </Carousel>
   );
 }
 
