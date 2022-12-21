@@ -1,16 +1,15 @@
-import { React, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
+import { Pokemon } from "./Parent";
 
 function Paginate(props) {
-  let [increase, setIncrease] = useState(5);
+  const pokemon = useContext(Pokemon)
+  let [increase, setIncrease] = useState(50);
   let [decrease, setDecrease] = useState(0);
-  const [pokemon, setPokemon] = useState([]);
 
   const keyPlus = (event) => {
     if (event.code === "ArrowRight") {
-      console.log(event);
-
       setIncrease(increase + 5);
       setDecrease(decrease + 5);
     } else if (event.code === "ArrowLeft") {
@@ -23,19 +22,7 @@ function Paginate(props) {
   useEffect(() => {
     document.addEventListener("keydown", keyPlus);
 
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setPokemon(
-          data.results.map((id) => {
-            return id.name;
-          })
-        );
-        // setPaginate(data.results);
-      });
-  }, []);
+  }, [increase, decrease]);
 
   const pagePlus = (prev) => {
     setIncrease(increase++);
@@ -44,19 +31,19 @@ function Paginate(props) {
 
   const pageMinus = () => {
     setIncrease(increase === 5 ? (increase = 5) : increase - 5);
-    setDecrease(decrease >= 5 ? (decrease = 5) : decrease - 5);
+    setDecrease(decrease === 5 ? (decrease = 5) : decrease - 5);
   };
 
   // let pokeId = props.paginate.map((pokemon, index) => pokemon.name);
 
   return (
-    <div className="d-flex justify-content-between align-items-center">
+    <div className="d-flex justify-content-around align-items-center">
       <div>
         <Button variant="outline-dark" onClick={pageMinus}>
           <AiFillCaretLeft></AiFillCaretLeft>
         </Button>
       </div>
-      <div>
+      <div className="d-flex align-items-center" style={{overflow: 'auto', maxWidth: '40rem'}}>
         {pokemon
           .filter((pokeId, index) => index <= increase && index >= decrease)
           .map((id, index) => {
@@ -64,7 +51,7 @@ function Paginate(props) {
               <Button
                 variant="outline-dark"
                 size="sm"
-                style={{ borderRadius: "20px" }}
+                style={{ borderRadius: "20px", padding: '1rem', }}
                 key={id}
                 onClick={() => props.onIDClick(id)}
                 active={id === props.pokeName}

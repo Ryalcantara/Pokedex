@@ -33,11 +33,13 @@ function Stats(props) {
   return (
       <div
         style={container}
-        
       >
         <div>
           <div className="row">
-            <h1>Base stats:</h1>
+            <h1><b>
+              Base stats:
+              </b>
+              </h1>
             {props.type && (
               <img
                 src={
@@ -81,10 +83,8 @@ function Stats(props) {
                 }
                 alt="type"
                 style={{
-                  height: "100px",
-                  width: "100px",
-                  fill: "green",
-                  stroke: "green",
+                  height: "50px",
+                  width: "50px",
                   borderRadius: '20px',
                   backgroundColor: 'rgba(0,0,0, 0.5)',
                   margin: '0 1rem'
@@ -137,8 +137,8 @@ function Stats(props) {
                 }
                 alt="type"
                 style={{
-                  height: "100px",
-                  width: "100px",
+                  height: "50px",
+                  width: "50px",
                   fill: "green",
                   stroke: "green",
                   borderRadius: '20px',

@@ -1,7 +1,6 @@
-import {React, useContext} from 'react'
+import {React} from 'react'
 import Main from "./Main";
 import Stats from "./Stats";
-import { PokeId } from './Parent';
 
 
 function Body(props) {
@@ -21,9 +20,8 @@ function Body(props) {
                   className="d-flex justify-content-center align-items-center"
                   style={{
                     backgroundColor: "rgba(0, 0, 0, 0.1)",
-                    position: "relative",
                     borderRadius: "29px",
-                    padding: "0 5rem",
+                    padding: "0 6rem",
                   }}
                 >
                   <div>

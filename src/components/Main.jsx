@@ -12,7 +12,7 @@ function Main(props) {
           <h1>{props.pokeName}</h1>
         </div>
       </div>
-      <div>
+      <div style={{position: 'relative'}}>
         <h1 id="overlay" style={{fontFamily: 'electroharmonix'}}>{props.pokeName}</h1>
         <div className="row">
           <img

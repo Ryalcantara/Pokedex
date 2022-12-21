@@ -1,36 +1,19 @@
-import Button from "react-bootstrap/Button";
-import { React, useState, useEffect } from "react";
-import Main from "./Main";
-import Stats from "./Stats";
+import { createContext, useState, useEffect } from "react";
 import Paginate from "./Paginate";
 import TopNav from "./TopNav";
-import pokeball from "../img/pokeball.png";
-import { BiSearchAlt } from "react-icons/bi";
 import Body from "./Body";
+
+export const Pokemon = createContext()
 
 function Parent() {
   let [currentPage, setCurrentPage] = useState(null);
   let [id, setId] = useState(1);
-  let [increase, setIncrease] = useState(5);
-  let [decrease, setDecrease] = useState(0);
   let [loading, setLoading] = useState(true);
   let [background, setBackground] = useState(null);
+  const [pokemon, setPokemon] = useState([])
 
   const idClick = (poke) => {
     setId((id = poke));
-  };
-
-  const keyPlus = (event) => {
-    if (event.code === "ArrowRight") {
-      console.log(event);
-
-      setIncrease(increase + 5);
-      setDecrease(decrease + 5);
-    } else if (event.code === "ArrowLeft") {
-      console.log(event);
-      setIncrease(increase === 5 ? (increase = 5) : increase - 5);
-      setDecrease(decrease === 0 ? (decrease = 0) : decrease - 5);
-    }
   };
 
   useEffect(() => {
@@ -50,21 +33,27 @@ function Parent() {
       .then((data) => {
         setBackground(data.color.name);
       });
+      
   }, [id]);
 
-  // useEffect(() => {
+  useEffect(() => {
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setPokemon(
+          data.results.map((id) => {
+            return id.name;
+          })
+        );
+      });
+  }, []);
 
-  //   fetch(
-  //     `https://pokeapi.co/api/v2/pokemon?limit=${increase}&offset=${decrease}`
-  //   )
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //     });
-  // }, [increase, decrease]);
 
   return (
+    <Pokemon.Provider value={pokemon}>
+
     <div
       id="background"
       style={{
@@ -80,7 +69,7 @@ function Parent() {
           width: "100vw",
         }}
       >
-        <TopNav/>
+        <TopNav search={(something) => idClick(something)}/>
         {loading && <div>Loading....</div>}
 
         <div className="d-flex justify-content-around align-items-center">
@@ -91,16 +80,14 @@ function Parent() {
         <div>
 
             <Paginate
-            
-              // increase={increase}
-              // decrease={decrease}
-              // pokeName={currentPage.name}
+              pokeName = {currentPage?.name}
               onIDClick={(something) => idClick(something)}
             />
 
         </div>
       </div>
     </div>
+    </Pokemon.Provider>
 
   );
 }
