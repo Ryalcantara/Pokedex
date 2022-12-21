@@ -49,6 +49,7 @@ function Search(props) {
                     }}
                     onClick={() => {
                       props.search(pokemon);
+                      console.log(index)
                       setSearch('')
                     }}
                     key={index}

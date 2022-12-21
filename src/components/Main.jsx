@@ -34,8 +34,8 @@ function Main(props) {
           />
         </div>
       </div>
-      <div style={{ position: "relative", margin: "-3rem -5rem 0 0" }}>
-        <Button variant="outline-dark" text="dark" onClick={handleShow}>
+      <div className="d-flex justify-content-end">
+        <Button variant="outline-dark" text="dark" style={{ border: 'solid'}} onClick={handleShow}>
           <MdAdsClick></MdAdsClick>
         </Button>
       </div>
@@ -48,7 +48,7 @@ function Main(props) {
       show={show} onHide={handleClose}>
         <Modal.Header style={{backgroundColor: `#bd5457`}}>
           <div style={{borderRadius: '50px'}}>
-          POKEDEXf
+          POKEDEX
                   </div>
           <Modal.Title>{props.pokeName}</Modal.Title>
         </Modal.Header >

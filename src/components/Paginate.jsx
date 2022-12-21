@@ -18,19 +18,20 @@ function Paginate(props) {
         </Button>
       </div>
       <div className="d-flex align-items-center" style={{overflow: 'auto', maxWidth: '40rem'}}>
-        {pokemon
+        {pokemon.filter((poke, id) =>{
+          return(props.pokeName === poke)
+        })
           .map((id, index) => {
             return (
-              <Button
-                variant="outline-dark"
-                size="sm"
+              <p
+          
                 style={{ borderRadius: "20px", padding: '1rem', }}
                 key={id}
-                onClick={() => props.onIDClick(id)}
+                onClick={() => props.onIDClick(index+1)}
                 active={id === props.pokeName}
               >
                 {id}
-              </Button>
+              </p>
             );
           })}
       </div>

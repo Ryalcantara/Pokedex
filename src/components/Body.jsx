@@ -21,7 +21,6 @@ function Body(props) {
                   style={{
                     backgroundColor: "rgba(0, 0, 0, 0.1)",
                     borderRadius: "29px",
-                    padding: "0 6rem",
                   }}
                 >
                   <div>

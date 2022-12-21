@@ -17,7 +17,7 @@ body{
 
 #overlay{
   font-family: 'electro';
-  font-size: 5rem;
+  font-size: 3rem;
   position: absolute;
   z-index: 90;
   filter: opacity(50%);

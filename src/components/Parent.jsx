@@ -4,7 +4,6 @@ import TopNav from "./TopNav";
 import Body from "./Body";
 
 export const Pokemon = createContext()
-
 function Parent() {
   let [currentPage, setCurrentPage] = useState(null);
   let [id, setId] = useState(1);
