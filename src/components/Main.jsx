@@ -48,7 +48,7 @@ function Main(props) {
       show={show} onHide={handleClose}>
         <Modal.Header style={{backgroundColor: `#bd5457`}}>
           <div style={{borderRadius: '50px'}}>
-          POKEDEX 
+          POKEDEXf
                   </div>
           <Modal.Title>{props.pokeName}</Modal.Title>
         </Modal.Header >

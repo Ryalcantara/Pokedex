@@ -17,6 +17,32 @@ function Parent() {
     setId((id = poke));
   };
 
+  const keyPlus = (event) => {
+    if (event.code === "ArrowRight") {
+      setIncrease(increase + 5);
+      setDecrease(decrease + 5);
+    } else if (event.code === "ArrowLeft") {
+      console.log(event);
+      setIncrease(increase === 5 ? (increase = 5) : increase - 5);
+      setDecrease(decrease === 0 ? (decrease = 0) : decrease - 5);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", keyPlus);
+
+  }, [keyPlus]);
+
+  const pagePlus = (prev) => {
+    setId(id++);
+    console.log(id)
+  };
+
+  const pageMinus = () => {
+    setId(id--)
+    console.log(id)
+  };
+
   useEffect(() => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then((res) => {
@@ -83,7 +109,8 @@ function Parent() {
         <div>
 
             <Paginate
-              id={id}
+              increase={pagePlus}
+              decrease={pageMinus}
               pokeName = {currentPage?.name}
               onIDClick={(something) => idClick(something)}
             />

@@ -5,41 +5,15 @@ import { Pokemon } from "./Parent";
 
 function Paginate(props) {
   const pokemon = useContext(Pokemon)
-  let [increase, setIncrease] = useState(50);
-  let [decrease, setDecrease] = useState(0);
 
-  const keyPlus = (event) => {
-    if (event.code === "ArrowRight") {
-      setIncrease(increase + 5);
-      setDecrease(decrease + 5);
-    } else if (event.code === "ArrowLeft") {
-      console.log(event);
-      setIncrease(increase === 5 ? (increase = 5) : increase - 5);
-      setDecrease(decrease === 0 ? (decrease = 0) : decrease - 5);
-    }
-  };
 
-  useEffect(() => {
-    document.addEventListener("keydown", keyPlus);
-
-  }, [increase, decrease]);
-
-  const pagePlus = (prev) => {
-    setIncrease(increase++);
-    setDecrease(decrease++);
-  };
-
-  const pageMinus = () => {
-    setIncrease(increase === 5 ? (increase = 5) : increase - 5);
-    setDecrease(decrease === 5 ? (decrease = 5) : decrease - 5);
-  };
 
   // let pokeId = props.paginate.map((pokemon, index) => pokemon.name);
 
   return (
     <div className="d-flex justify-content-around align-items-center">
       <div>
-        <Button variant="outline-dark" onClick={pageMinus}>
+        <Button variant="outline-dark" onClick={props.decrease}>
           <AiFillCaretLeft></AiFillCaretLeft>
         </Button>
       </div>
@@ -62,7 +36,7 @@ function Paginate(props) {
       </div>
 
       <div>
-        <Button variant="outline-dark" onClick={pagePlus}>
+        <Button variant="outline-dark" onClick={props.increase}>
           <AiFillCaretRight></AiFillCaretRight>
         </Button>
       </div>
