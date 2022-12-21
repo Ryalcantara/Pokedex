@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { Scheme } from "./SchemeProvider";
 import Sprite from "./RenderSprite";
 import Stats from "./RenderStats";
+import OfflineFallback from "./OfflineFallback";
 import style from "./styles/view.module.css";
 //
 export default function View({ url }) {
@@ -20,7 +21,7 @@ export default function View({ url }) {
         height: data.height,
         weight: data.weight,
       },
-      image: data.sprites.other.dream_world.front_default,
+      image: data.sprites.other["official-artwork"].front_default,
       species: data.species.name,
       stats: data.stats.map((item) => ({
         name: item.stat.name,
@@ -57,7 +58,17 @@ export default function View({ url }) {
           style={{ backgroundColor: scheme.scheme.color }}
         >
           <div className={style.desaturate} />
-          <p className={style["backdrop-text"]}>{data.name}</p>
+          <p
+            className={style["backdrop-text"]}
+            style={{
+              color:
+                scheme.scheme.color === "black"
+                  ? "rgba(255, 255, 255, 0.2)"
+                  : "rgba(0, 0, 0, 0.2)",
+            }}
+          >
+            {data.name}
+          </p>
           <div className={style.content}>
             <Sprite data={data} />
             <Stats data={data} />
@@ -71,7 +82,7 @@ export default function View({ url }) {
         className={style.section}
         style={{ display: "grid", placeItems: "center" }}
       >
-        <p>Loading...</p>
+        <OfflineFallback />
       </section>
     );
   }

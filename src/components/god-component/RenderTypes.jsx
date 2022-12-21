@@ -1,4 +1,5 @@
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
+import { Scheme } from "./SchemeProvider";
 
 import bug from "../../img/icons/bug.svg";
 import dark from "../../img/icons/dark.svg";
@@ -57,6 +58,7 @@ const style = {
 };
 
 export default function _({ types }) {
+  const scheme = useContext(Scheme);
   //(performance optimized) wrapped type picker
   const findType = useCallback(
     function findType(name) {
@@ -71,7 +73,13 @@ export default function _({ types }) {
         const type = findType(item.name);
         return (
           <img
-            style={style.image}
+            style={{
+              ...style.image,
+              backgroundColor:
+                scheme.scheme.color === "black"
+                  ? "rgba(255, 255, 255, 0.3)"
+                  : "rgba(0, 0, 0, 0.3)",
+            }}
             src={type?.svg}
             alt={item.name}
             key={item.name}

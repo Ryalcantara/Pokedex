@@ -28,6 +28,8 @@ export default function Search() {
           <BuildResult
             data={result}
             setActivePokemon={pokemonContext.setPokemon}
+            query={searchQuery}
+            setQuery={setSearchQuery}
           />
         ) : null}
       </div>
@@ -35,8 +37,9 @@ export default function Search() {
   );
 }
 
-function BuildResult({ data, setActivePokemon }) {
+function BuildResult({ data, setActivePokemon, query, setQuery }) {
   function onClick(info) {
+    setQuery("");
     setActivePokemon({ ...info });
   }
   return (

@@ -1,3 +1,5 @@
+import { Scheme } from "./SchemeProvider";
+import { useContext } from "react";
 const style = {
   container: {
     textTransform: "uppercase",
@@ -19,10 +21,29 @@ const style = {
 };
 
 export default function Badge({ name, value }) {
+  const scheme = useContext(Scheme);
   return (
-    <div style={style.container}>
-      <span style={style.label}>{name}</span>
-      <span style={style.value}>{value}</span>
+    <div
+      style={{
+        ...style.container,
+        backgroundColor:
+          scheme.scheme.color === "black"
+            ? "rgba(255, 255, 255, 0.3)"
+            : "rgba(0, 0, 0, 0.3)",
+      }}
+    >
+      <span style={{ ...style.label }}>{name}</span>
+      <span
+        style={{
+          ...style.value,
+          backgroundColor:
+            scheme.scheme.color === "black"
+              ? "rgba(255, 255, 255, 0.3)"
+              : "rgba(0, 0, 0, 0.3)",
+        }}
+      >
+        {value}
+      </span>
     </div>
   );
 }
