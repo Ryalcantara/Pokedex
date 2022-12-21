@@ -4,8 +4,10 @@ import { React, useState, useEffect } from "react";
 import Main from "./Main";
 import Stats from "./Stats";
 import Paginate from "./Paginate";
+import TopNav from "./TopNav";
 import pokeball from "../img/pokeball.png";
 import { BiSearchAlt } from "react-icons/bi";
+import Body from "./Body";
 
 function Parent() {
   let [currentPage, setCurrentPage] = useState(null);
@@ -93,30 +95,7 @@ function Parent() {
           width: "100vw",
         }}
       >
-        <div className="d-flex align-items-center justify-content-between">
-          <div className="d-flex align-items-center">
-            <img
-              src={pokeball}
-              alt=""
-              height="50px"
-              width="50px"
-              style={{ margin: "5px 0 0 5px" }}
-            />
-            <h1 style={{ margin: "5px 0 0 5px" }}>POKEDEX</h1>
-          </div>
-          <div className="d-flex">
-            <form action="" className="d-flex" style={{ margin: "10PX" }}>
-              <input
-                type="search"
-                className="form-control"
-                placeholder="Search pokemon"
-              />
-              <Button variant="outline-dark" className="btn">
-                <BiSearchAlt></BiSearchAlt>
-              </Button>
-            </form>
-          </div>
-        </div>
+        <TopNav/>
         {loading && <div>Loading....</div>}
 
         <div className="d-flex justify-content-around align-items-center">
@@ -125,52 +104,7 @@ function Parent() {
               <AiFillCaretLeft></AiFillCaretLeft>
             </Button>
           </div>
-          <div style={{ margin: "1rem", }}>
-            <div>
-              <div
-                style={{
-                  backgroundColor: background === 'black' ? 'gray' : background,
-                  transition: "all 300ms ease",
-                  borderRadius: "29px",
-                }}
-                >
-                <div
-                className="d-flex justify-content-center align-items-center"
-                style={{
-                  backgroundColor: "rgba(0, 0, 0, 0.1)",
-                  position: 'relative',
-                  borderRadius: "29px",
-                  padding: '0 5rem'
-                  }}
-                >
-                  <div>
-                    {currentPage && (
-                      <Main
-                        pokeName={currentPage.name}
-                        pokeId={currentPage.id}
-                        sprites={
-                          currentPage.sprites.other["official-artwork"]
-                            .front_default
-                        }
-                      />
-                    )}
-                  </div>
-                  <div>
-                    {currentPage && (
-                      <Stats
-                        stats={currentPage.stats}
-                        type={currentPage?.types[0].type.name}
-                        type2={
-                          currentPage?.types[1] &&
-                          currentPage?.types[1].type.name
-                        }
-                      />
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+         <Body currentPage={currentPage} background={background}/>
 
           <div>
             <Button variant="outline-dark" onClick={pagePlus}>

@@ -23,7 +23,7 @@ function Paginate( props ) {
                 style={{ margin: "0 2rem 0 0", borderRadius: '20px'}}
                 key={id}
                 onClick={()=>props.onIDClick(id)}
-                active={id == props.pokeName}
+                active={id === props.pokeName}
                >
                 {id}
               </Button>
