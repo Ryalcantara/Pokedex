@@ -45,7 +45,6 @@ function Paginate(props) {
       </div>
       <div className="d-flex align-items-center" style={{overflow: 'auto', maxWidth: '40rem'}}>
         {pokemon
-          .filter((pokeId, index) => index <= increase && index >= decrease)
           .map((id, index) => {
             return (
               <Button

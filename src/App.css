@@ -8,11 +8,6 @@ body{
   background-color: #d2cecb;  
 }
 
-.badgeContainer{
-  margin-top: 2rem;
-  font-size: 30px;
-}
-
 @font-face {
  
   font-family: "electroharmonix";   /*Can be any text*/

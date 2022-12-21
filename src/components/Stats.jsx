@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Badge, Container, Row } from "react-bootstrap";
 
 //types
 import grass from "../img/icons/grass.svg";
@@ -24,158 +23,193 @@ import water from "../img/icons/water.svg";
 function Stats(props) {
   const container = {
     borderLeft: "solid #fcfcf7",
-    padding: '1rem',
-    margin: '-1rem',
+    padding: "1rem",
+    margin: "1rem",
     // borderRadius: '20px',
     // backgroundColor: 'rgba(0,0,0, 0.5)',
   };
 
+  const badge = {
+    container: {
+      display: "flex",
+      color: "white",
+      borderRadius: "8px",
+    },
+    value: {
+      padding: "8px",
+      borderRadius: "0px 8px 8px 0px",
+      backgroundColor: "rgba(0, 0, 0, 0.3)",
+    },
+    label: {
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      borderRadius: "8px 0 0 8px",
+
+      padding: "8px",
+    },
+  };
+
   return (
-      <div
-        style={container}
-      >
-        <div>
+    <div style={container}>
+      <div>
+        <div className="row">
+          <h4>
+            <b>Base stats:</b>
+          </h4>
+          {props.type && (
+            <img
+              src={
+                props.type === "grass"
+                  ? grass
+                  : props.type === "fire"
+                  ? fire
+                  : props.type === "bug"
+                  ? bug
+                  : props.type === "dark"
+                  ? dark
+                  : props.type === "dragon"
+                  ? dragon
+                  : props.type === "electric"
+                  ? electric
+                  : props.type === "electric"
+                  ? electric
+                  : props.type === "fairy"
+                  ? fairy
+                  : props.type === "fighting"
+                  ? fighting
+                  : props.type === "flying"
+                  ? flying
+                  : props.type === "ghost"
+                  ? ghost
+                  : props.type === "ground"
+                  ? ground
+                  : props.type === "ice"
+                  ? ice
+                  : props.type === "poison"
+                  ? poison
+                  : props.type === "psychic"
+                  ? psychic
+                  : props.type === "rock"
+                  ? rock
+                  : props.type === "steel"
+                  ? steel
+                  : props.type === "water"
+                  ? water
+                  : normal
+              }
+              alt="type"
+              style={{
+                height: "60px",
+                width: "60px",
+                borderRadius: "20px",
+                backgroundColor: "rgba(0,0,0, 0.5)",
+                margin: "0 1rem",
+              }}
+              title={props.type}
+            />
+          )}
+          {props.type2 && (
+            <img
+              src={
+                props.type2 && props.type2 === "grass"
+                  ? grass
+                  : props.type2 === "fire"
+                  ? fire
+                  : props.type2 === "bug"
+                  ? bug
+                  : props.type2 === "dark"
+                  ? dark
+                  : props.type2 === "dragon"
+                  ? dragon
+                  : props.type2 === "electric"
+                  ? electric
+                  : props.type2 === "electric"
+                  ? electric
+                  : props.type2 === "fairy"
+                  ? fairy
+                  : props.type2 === "fighting"
+                  ? fighting
+                  : props.type2 === "flying"
+                  ? flying
+                  : props.type2 === "ghost"
+                  ? ghost
+                  : props.type2 === "ground"
+                  ? ground
+                  : props.type2 === "ice"
+                  ? ice
+                  : props.type2 === "poison"
+                  ? poison
+                  : props.type2 === "normal"
+                  ? normal
+                  : props.type2 === "psychic"
+                  ? psychic
+                  : props.type2 === "rock"
+                  ? rock
+                  : props.type2 === "steel"
+                  ? steel
+                  : props.type2 === "water"
+                  ? water
+                  : null
+              }
+              alt="type"
+              style={{
+                height: "60px",
+                width: "60px",
+                fill: "green",
+                stroke: "green",
+                borderRadius: "20px",
+                backgroundColor: "rgba(0,0,0, 0.5)",
+              }}
+              title={props.type2}
+            />
+          )}
+        </div>
+        <br></br>
+        <div style={{ borderBottom: "solid", paddingBottom: "10px" }}>
           <div className="row">
-            <h1><b>
-              Base stats:
-              </b>
-              </h1>
-            {props.type && (
-              <img
-                src={
-                  props.type === "grass"
-                    ? grass
-                    : props.type === "fire"
-                    ? fire
-                    : props.type === "bug"
-                    ? bug
-                    : props.type === "dark"
-                    ? dark
-                    : props.type === "dragon"
-                    ? dragon
-                    : props.type === "electric"
-                    ? electric
-                    : props.type === "electric"
-                    ? electric
-                    : props.type === "fairy"
-                    ? fairy
-                    : props.type === "fighting"
-                    ? fighting
-                    : props.type === "flying"
-                    ? flying
-                    : props.type === "ghost"
-                    ? ghost
-                    : props.type === "ground"
-                    ? ground
-                    : props.type === "ice"
-                    ? ice
-                    : props.type === "poison"
-                    ? poison
-                    : props.type === "psychic"
-                    ? psychic
-                    : props.type === "rock"
-                    ? rock
-                    : props.type === "steel"
-                    ? steel
-                    : props.type === "water"
-                    ? water
-                    : normal
-                }
-                alt="type"
-                style={{
-                  height: "50px",
-                  width: "50px",
-                  borderRadius: '20px',
-                  backgroundColor: 'rgba(0,0,0, 0.5)',
-                  margin: '0 1rem'
-                }}
-                title={props.type}
-              />
-            )}
-            {props.type2 && (
-              <img
-                src={
-                  props.type2 && props.type2 === "grass"
-                    ? grass
-                    : props.type2 === "fire"
-                    ? fire
-                    : props.type2 === "bug"
-                    ? bug
-                    : props.type2 === "dark"
-                    ? dark
-                    : props.type2 === "dragon"
-                    ? dragon
-                    : props.type2 === "electric"
-                    ? electric
-                    : props.type2 === "electric"
-                    ? electric
-                    : props.type2 === "fairy"
-                    ? fairy
-                    : props.type2 === "fighting"
-                    ? fighting
-                    : props.type2 === "flying"
-                    ? flying
-                    : props.type2 === "ghost"
-                    ? ghost
-                    : props.type2 === "ground"
-                    ? ground
-                    : props.type2 === "ice"
-                    ? ice
-                    : props.type2 === "poison"
-                    ? poison
-                    : props.type2 === "normal"
-                    ? normal
-                    : props.type2 === "psychic"
-                    ? psychic
-                    : props.type2 === "rock"
-                    ? rock
-                    : props.type2 === "steel"
-                    ? steel
-                    : props.type2 === "water"
-                    ? water
-                    : null
-                }
-                alt="type"
-                style={{
-                  height: "50px",
-                  width: "50px",
-                  fill: "green",
-                  stroke: "green",
-                  borderRadius: '20px',
-                  backgroundColor: 'rgba(0,0,0, 0.5)',
-                }}
-                title={props.type2}
-              />
-            )}
+            <div className="col" style={badge.container}>
+              <span style={badge.label}>HP:</span>
+              <span style={badge.value}>{props.stats[0].base_stat}</span>
+            </div>
+            <div className="col" style={badge.container}>
+              <span style={badge.label}>Attack:</span>
+              <span style={badge.value}>{props.stats[1].base_stat}</span>
+            </div>
+            <div className="col" style={badge.container}>
+              <span style={badge.label}>Defense:</span>
+              <span style={badge.value}>{props.stats[2].base_stat}</span>
+            </div>
           </div>
+          <br></br>
           <div className="row">
-            <div className="badgeContainer">
-              <Badge pill bg="light" text="dark">
-                HP: {props.stats[0].base_stat}
-              </Badge>{" "}
-              <Badge pill bg="light" text="dark">
-                Attack: {props.stats[1].base_stat}
-              </Badge>{" "}
-              <br></br>
-              <Badge pill bg="light" text="dark">
-                Defense: {props.stats[2].base_stat}
-              </Badge>{" "}
-              <Badge pill bg="light" text="dark">
-                SP Attack: {props.stats[3].base_stat}
-              </Badge>{" "}
-              <br></br>
-              <Badge pill bg="light" text="dark">
-                SP Defense: {props.stats[4].base_stat}
-              </Badge>{" "}
-              <Badge pill bg="light" text="dark">
-                Speed: {props.stats[5].base_stat}
-              </Badge>{" "}
-              <br></br>
+            <div className="col" style={badge.container}>
+              <span style={badge.label}>SP Attack:</span>
+              <span style={badge.value}>{props.stats[3].base_stat}</span>
+            </div>
+            <div className="col" style={badge.container}>
+              <span style={badge.label}>SP Defense:</span>
+              <span style={badge.value}>{props.stats[4].base_stat}</span>
+            </div>
+          </div>
+          <br></br>
+          <div className="col" style={badge.container}>
+            <span style={badge.label}>Speed:</span>
+            <span style={badge.value}>{props.stats[5].base_stat}</span>
+          </div>
+        </div>
+        <div>
+          <h5><b>Abilities:</b></h5>
+        <div className="row">
+            <div className="col" style={badge.container}>
+            {props.pokemon.abilities[0].ability.name && <span style={badge.label}>{props.pokemon.abilities[0].ability.name}</span>}
+            </div>
+            <div className="col" style={badge.container}>
+              {props.pokemon.abilities[1]?.ability.name && <span style={badge.label}>{props.pokemon.abilities[1].ability.name}</span>}
             </div>
           </div>
         </div>
       </div>
-    );
+    </div>
+  );
 }
 
 export default Stats;

@@ -7,7 +7,7 @@ function Body(props) {
 
 
   return (
-    <div style={{ margin: "1rem" }}>
+    <div style={{ margin: ".1rem" }}>
             <div>
               <div
                 style={{
@@ -27,6 +27,8 @@ function Body(props) {
                   <div>
                     {props.currentPage && (
                       <Main
+                      flavor={props.flavor}
+                        color={props.background}
                         pokeName={props.currentPage.name}
                         pokeId={props.currentPage.id}
                         sprites={
@@ -39,6 +41,7 @@ function Body(props) {
                   <div>
                     {props.currentPage && (
                       <Stats
+                        pokemon={props.currentPage}
                         stats={props.currentPage.stats}
                         type={props.currentPage?.types[0].type.name}
                         type2={

@@ -11,6 +11,7 @@ function Parent() {
   let [loading, setLoading] = useState(true);
   let [background, setBackground] = useState(null);
   const [pokemon, setPokemon] = useState([])
+  const [flavor, setFlavor] = useState('')
 
   const idClick = (poke) => {
     setId((id = poke));
@@ -24,6 +25,7 @@ function Parent() {
       .then((data) => {
         setCurrentPage(data);
         setLoading(false);
+
       });
 
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`)
@@ -32,6 +34,7 @@ function Parent() {
       })
       .then((data) => {
         setBackground(data.color.name);
+        setFlavor(data.flavor_text_entries[1].flavor_text)
       });
       
   }, [id]);
@@ -58,7 +61,7 @@ function Parent() {
       id="background"
       style={{
         backgroundColor: `${background}`,
-        height: "100vh",
+        height: "100%",
         width: "100vw",
       }}
     >
@@ -74,12 +77,13 @@ function Parent() {
 
         <div className="d-flex justify-content-around align-items-center">
           
-         <Body currentPage={currentPage} background={background}/>
+         <Body currentPage={currentPage} background={background} flavor={flavor}/>
 
         </div>
         <div>
 
             <Paginate
+              id={id}
               pokeName = {currentPage?.name}
               onIDClick={(something) => idClick(something)}
             />

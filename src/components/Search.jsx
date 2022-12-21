@@ -16,6 +16,7 @@ function Search(props) {
             type="search"
             className="form-control"
             placeholder="Search pokemon"
+            value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
@@ -46,7 +47,10 @@ function Search(props) {
                       padding: "1rem",
                       width: "113%",
                     }}
-                    onClick={() => props.search(pokemon)}
+                    onClick={() => {
+                      props.search(pokemon);
+                      setSearch('')
+                    }}
                     key={index}
                   >
                     {pokemon}
