@@ -53,7 +53,7 @@ body{
 }
 
 
-@media all and (max-width: 480px) {
+@media all and (max-width: 580px) {
  #stats{
   display: none;
  }
