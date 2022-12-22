@@ -1,29 +1,33 @@
-import {React} from 'react'
+import React, {useContext} from 'react'
 import Main from "./Main";
 import Stats from "./Stats";
+import ThemeProvider from 'react-bootstrap/ThemeProvider'
+
 
 
 function Body(props) {
 
-
   return (
+    
     <div style={{ margin: ".1rem" }}>
+     
             <div>
               <div
-                style={{
-                  backgroundColor: props.background === "black" ? "gray" : props.background,
-                  transition: "all 300ms ease",
-                  borderRadius: "29px",
-                }}
+              id='body-background'
+                // style={{
+                //   backgroundColor: props.background === "black" ? "gray" : props.background,
+                //   transition: "all 300ms ease",
+                //   borderRadius: "29px",
+                // }}
               >
                 <div
                   className="d-flex justify-content-center align-items-center"
-                  style={{
-                    backgroundColor: "rgba(0, 0, 0, 0.1)",
-                    borderRadius: "29px",
-                  }}
+                  // style={{
+                  //   backgroundColor: "rgba(0, 0, 0, 0.1)",
+                  //   borderRadius: "29px",
+                  // }}
                 >
-                  <div>
+                  <div id='main' className='mainn active'>
                     {props.currentPage && (
                       <Main
                       flavor={props.flavor}
@@ -37,7 +41,7 @@ function Body(props) {
                       />
                     )}
                   </div>
-                  <div>
+                  <div id='stats' className='mainn'>
                     {props.currentPage && (
                       <Stats
                         pokemon={props.currentPage}

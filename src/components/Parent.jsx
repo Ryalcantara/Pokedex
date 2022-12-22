@@ -16,21 +16,6 @@ function Parent() {
     setId((id = poke));
   };
 
-  const keyPlus = (event) => {
-    if (event.code === "ArrowRight") {
-      setIncrease(increase + 5);
-      setDecrease(decrease + 5);
-    } else if (event.code === "ArrowLeft") {
-      console.log(event);
-      setIncrease(increase === 5 ? (increase = 5) : increase - 5);
-      setDecrease(decrease === 0 ? (decrease = 0) : decrease - 5);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("keydown", keyPlus);
-
-  }, [keyPlus]);
 
   const pagePlus = (prev) => {
     setId(id++);
@@ -48,8 +33,10 @@ function Parent() {
         return res.json();
       })
       .then((data) => {
+        // console.log(data)
         setCurrentPage(data);
         setLoading(false);
+        setId(data.id);
 
       });
 
@@ -59,8 +46,10 @@ function Parent() {
       })
       .then((data) => {
         setBackground(data.color.name);
+        document.body.style.backgroundColor = `${data.color.name}`
+        document.getElementById('root').style.backgroundColor = "rgba(255, 255, 255, 0.5)"
         setFlavor(data.flavor_text_entries[1].flavor_text)
-      });
+      })
       
   }, [id]);
 
@@ -82,21 +71,7 @@ function Parent() {
   return (
     <Pokemon.Provider value={pokemon}>
 
-    <div
-      id="background"
-      style={{
-        backgroundColor: `${background}`,
-        height: "100%",
-        width: "100vw",
-      }}
-    >
-      <div
-        style={{
-          backgroundColor: "rgba(255, 255, 255, 0.5)",
-          height: "100vh",
-          width: "100vw",
-        }}
-      >
+     
         <TopNav search={(something) => idClick(something)}/>
         {loading && <div>Loading....</div>}
 
@@ -115,8 +90,8 @@ function Parent() {
             />
 
         </div>
-      </div>
-    </div>
+ 
+   
     </Pokemon.Provider>
 
   );

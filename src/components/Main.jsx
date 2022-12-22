@@ -2,15 +2,14 @@ import { useState } from "react";
 import "../fonts/electroharmonix.ttf";
 import { MdAdsClick } from "react-icons/md";
 import { Button } from "react-bootstrap";
-import Modal from 'react-bootstrap/Modal';
-import { BiShapeCircle } from "react-icons/bi";
+import Modal from "./Modal";
+import { GrStatusUnknown } from "react-icons/gr";
 
 function Main(props) {
-
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   return (
     <div style={{ padding: "1rem" }}>
@@ -22,7 +21,7 @@ function Main(props) {
           <h1>{props.pokeName}</h1>
         </div>
       </div>
-      <div style={{ position: "relative" }}>
+      <div style={{ marginBottom: ".1rem" }}>
         <h1 id="overlay" style={{ fontFamily: "electroharmonix" }}>
           {props.pokeName}
         </h1>
@@ -34,30 +33,36 @@ function Main(props) {
           />
         </div>
       </div>
-      <div className="d-flex justify-content-end">
-        <Button variant="outline-dark" text="dark" style={{ border: 'solid'}} onClick={handleShow}>
+      <div
+        className="d-flex justify-content-between"
+        style={{ marginBottom: "1rem" }}
+      >
+        <Button
+          variant="outline-dark"
+          text="dark"
+          onClick={handleShow}
+        >
           <MdAdsClick></MdAdsClick>
+        </Button>
+        <Button
+        id='status'
+          variant="outline-dark"
+          text="dark"
+          onClick={()=>{
+          document.querySelector('#stats').style.display='inline'
+          document.querySelector('#main').style.display='none'
+
+        }}
+        >
+          <GrStatusUnknown />
         </Button>
       </div>
       <Modal
-      style={{backdropFilter: 'blur(5px)'}}
-       {...props}
-       size="lg"
-       aria-labelledby="contained-modal-title-vcenter"
-       centered
-      show={show} onHide={handleClose}>
-        <Modal.Header style={{backgroundColor: `#bd5457`}}>
-          <div style={{borderRadius: '50px'}}>
-          POKEDEX
-                  </div>
-          <Modal.Title>{props.pokeName}</Modal.Title>
-        </Modal.Header >
-        <Modal.Body style={{backgroundColor: `#bd5457`}}>
-
-          {props.flavor}
-          </Modal.Body>
-     
-      </Modal>
+        pokeName={props.pokeName}
+        flavor={props.flavor}
+        show={show}
+        handleClose={handleClose}
+      />
     </div>
   );
 }
