@@ -6,7 +6,6 @@ import ThemeProvider from 'react-bootstrap/ThemeProvider'
 
 
 function Body(props) {
- const breakPoint = useContext(ThemeProvider)
 
   return (
     

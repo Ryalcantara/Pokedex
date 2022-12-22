@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { Pokemon } from "./Parent";
@@ -8,7 +8,6 @@ function Paginate(props) {
 
 
 
-  // let pokeId = props.paginate.map((pokemon, index) => pokemon.name);
 
   return (
     <div className="d-flex justify-content-around align-items-center">
