@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-
+import { Button } from "react-bootstrap";
+import { GrStatusUnknown } from "react-icons/gr";
 //types
 import grass from "../img/icons/grass.svg";
 import bug from "../img/icons/bug.svg";
@@ -196,7 +196,7 @@ function Stats(props) {
             <span style={badge.value}>{props.stats[5].base_stat}</span>
           </div>
         </div>
-        <div>
+        <div style={{margin: '1rem'}}>
           <h5><b>Abilities:</b></h5>
         <div className="row">
             <div className="col" style={badge.container}>
@@ -207,6 +207,24 @@ function Stats(props) {
             </div>
           </div>
         </div>
+      </div>
+      <div
+        className="d-flex justify-content-end"
+        style={{ marginBottom: "1rem" }}
+      >
+       
+        <Button
+        id='main-body'
+          variant="outline-dark"
+          text="dark"
+          onClick={()=>{
+          document.querySelector('#stats').style.display='none'
+          document.querySelector('#main').style.display='inline'
+
+        }}
+        >
+          <GrStatusUnknown />
+        </Button>
       </div>
     </div>
   );
