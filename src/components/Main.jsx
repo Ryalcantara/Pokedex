@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "../fonts/electroharmonix.ttf";
-import { MdAdsClick } from "react-icons/md";
+import { TbPokeball } from "react-icons/tb";
 import { Button } from "react-bootstrap";
 import Modal from "./Modal";
-import { GrStatusUnknown } from "react-icons/gr";
+import { GrStatusInfo, GrNext } from "react-icons/gr";
 
 function Main(props) {
   const [show, setShow] = useState(false);
@@ -42,7 +42,7 @@ function Main(props) {
           text="dark"
           onClick={handleShow}
         >
-          <MdAdsClick></MdAdsClick>
+          <TbPokeball></TbPokeball>
         </Button>
         <Button
         id='status'
@@ -54,7 +54,7 @@ function Main(props) {
 
         }}
         >
-          <GrStatusUnknown />
+          <GrNext></GrNext>
         </Button>
       </div>
       <Modal

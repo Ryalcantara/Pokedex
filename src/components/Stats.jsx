@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import { GrStatusUnknown } from "react-icons/gr";
+import { GrPrevious, GrStatusUnknown } from "react-icons/gr";
 //types
 import grass from "../img/icons/grass.svg";
 import bug from "../img/icons/bug.svg";
@@ -22,7 +22,7 @@ import water from "../img/icons/water.svg";
 
 function Stats(props) {
   const container = {
-    borderLeft: "solid #fcfcf7",
+    // borderLeft: "solid #fcfcf7",
     padding: "1rem",
     margin: "1rem",
     // borderRadius: '20px',
@@ -164,7 +164,7 @@ function Stats(props) {
           )}
         </div>
         <br></br>
-        <div style={{ borderBottom: "solid", paddingBottom: "10px" }}>
+        <div style={{ borderLeft: "solid", paddingLeft: "10px", borderColor: 'rgba(0, 0, 0, 0.5)'}}>
           <div className="row">
             <div className="col" style={badge.container}>
               <span style={badge.label}>HP:</span>
@@ -196,18 +196,20 @@ function Stats(props) {
             <span style={badge.value}>{props.stats[5].base_stat}</span>
           </div>
         </div>
+        <hr></hr>
         <div style={{margin: '1rem'}}>
           <h5><b>Abilities:</b></h5>
         <div className="row">
             <div className="col" style={badge.container}>
-            {props.pokemon.abilities[0].ability.name && <span style={badge.label}>{props.pokemon.abilities[0].ability.name}</span>}
+            {props.pokemon.abilities[0].ability.name && <span style={{borderRadius: '10px',   backgroundColor: "rgba(0, 0, 0, 0.3)", padding: '10px'}}>{props.pokemon.abilities[0].ability.name}</span>}
             </div>
             <div className="col" style={badge.container}>
-              {props.pokemon.abilities[1]?.ability.name && <span style={badge.label}>{props.pokemon.abilities[1].ability.name}</span>}
+              {props.pokemon.abilities[1]?.ability.name && <span style={{borderRadius: '10px',   backgroundColor: "rgba(0, 0, 0, 0.3)", padding: '10px'}}>{props.pokemon.abilities[1].ability.name}</span>}
             </div>
           </div>
         </div>
       </div>
+      <hr></hr>
       <div
         className="d-flex justify-content-end"
         style={{ marginBottom: "1rem" }}
@@ -223,7 +225,7 @@ function Stats(props) {
 
         }}
         >
-          <GrStatusUnknown />
+        <GrPrevious></GrPrevious>
         </Button>
       </div>
     </div>

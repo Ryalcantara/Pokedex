@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { Pokemon } from "./Parent";
+import {BiLeftArrow, BiRightArrow} from 'react-icons/bi'
 
 function Paginate(props) {
   const pokemon = useContext(Pokemon)
@@ -14,7 +15,7 @@ function Paginate(props) {
     <div className="d-flex justify-content-around align-items-center">
       <div>
         <Button variant="outline-dark" onClick={props.decrease}>
-          <AiFillCaretLeft></AiFillCaretLeft>
+          <BiLeftArrow></BiLeftArrow>
         </Button>
       </div>
       <div className="d-flex align-items-center" style={{overflow: 'auto', maxWidth: '40rem'}}>
@@ -38,7 +39,7 @@ function Paginate(props) {
 
       <div>
         <Button variant="outline-dark" onClick={props.increase}>
-          <AiFillCaretRight></AiFillCaretRight>
+          <BiRightArrow></BiRightArrow>
         </Button>
       </div>
     </div>
