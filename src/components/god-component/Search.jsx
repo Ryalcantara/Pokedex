@@ -7,7 +7,7 @@ export default function Search() {
   const pokemonContext = useContext(Pokemon);
   const [searchQuery, setSearchQuery] = useState("");
   const [result, search] = usePokeSearch(
-    "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0"
+    "https://pokeapi.co/api/v2/pokemon?limit=10000000&offset=0"
   );
 
   function onSearch(e) {
