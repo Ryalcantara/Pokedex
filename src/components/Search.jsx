@@ -24,7 +24,6 @@ function Search(props) {
               backgroundColor: search && "rgba(255, 255, 255, 0.5)",
               borderRadius: "10px",
               maxHeight: "20rem",
-              maxWidth: "50%",
               position: "absolute",
               overflow: "auto",
               // paddingRight: '10rem',
@@ -39,16 +38,17 @@ function Search(props) {
                   })
                   .map((pokemon, index) => {
                     return (
-                      <button
+                      <li
+                      type='button'
                       className="d-flex justify-content-start align-items-center"
                         style={{
-                          backgroundColor: "rgba(0,0,0,0,5)",
+                          backgroundColor: "rgba(255,255,255,0.5)",
                           border: "solid rgba(0, 0, 0, 0.5)",
                           borderRadius: "10px",
-                          marginLeft: "-rem",
+                          marginLeft: "-2rem",
                           padding: "1rem",
-                          paddingRight: "1rem",
-                          width: "100%",
+                          // height: '100%',
+                          // width: "100%",
                         }}
                         onClick={() => {
                           props.search(pokemon);
@@ -58,7 +58,7 @@ function Search(props) {
                         key={index}
                       >
                         {pokemon}
-                      </button>
+                      </li>
                     );
                   })}
             </ul>

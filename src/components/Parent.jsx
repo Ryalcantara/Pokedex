@@ -4,6 +4,7 @@ import TopNav from "./TopNav";
 import Body from "./Body";
 
 export const Pokemon = createContext()
+export const BackgroundColor = createContext()
 function Parent() {
   let [currentPage, setCurrentPage] = useState(null);
   let [id, setId] = useState(1);
@@ -45,9 +46,15 @@ function Parent() {
         return res.json();
       })
       .then((data) => {
-        setBackground(data.color.name);
+        let body =  document.body;
         document.body.style.backgroundColor = `${data.color.name}`
-        document.getElementById('root').style.backgroundColor = "rgba(255, 255, 255, 0.5)"
+        let rgb = window.getComputedStyle(body).backgroundColor
+        var new_col = rgb.replace(/rgb/i, "rgba");
+        var new_col = new_col.replace(/\)/i,',0.5)');
+        document.body.style.backgroundColor = `${new_col}`
+        setBackground(`${new_col}`);
+        
+
         setFlavor(data.flavor_text_entries[1].flavor_text)
       })
       
@@ -70,6 +77,8 @@ function Parent() {
 
   return (
     <Pokemon.Provider value={pokemon}>
+      <BackgroundColor.Provider value={background}>
+
 
      
         <TopNav search={(something) => idClick(something)}/>
@@ -91,6 +100,7 @@ function Parent() {
 
         </div>
  
+        </BackgroundColor.Provider>
    
     </Pokemon.Provider>
 

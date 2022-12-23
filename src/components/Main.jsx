@@ -1,69 +1,77 @@
-import { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../fonts/electroharmonix.ttf";
 import { TbPokeball } from "react-icons/tb";
-import { Button } from "react-bootstrap";
 import Modal from "./Modal";
-import { GrStatusInfo, GrNext } from "react-icons/gr";
+import { GrNext } from "react-icons/gr";
+import { BackgroundColor } from "./Parent";
 
 function Main(props) {
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+  const background = useContext(BackgroundColor);
 
   return (
-    <div style={{ padding: "1rem" }}>
-      <div>
-        <div className="row">
-          <h4>#{props.pokeId}</h4>
+    <React.Fragment>
+      <div className="d-flex justify-content-between flex-column">
+        <div className="flex-column">
+          <div>
+            <h4>#{props.pokeId}</h4>
+          </div>
+          <div>
+            <h1>{props.pokeName}</h1>
+            <h1 id="overlay" style={{ fontFamily: "electroharmonix" }}>
+              {props.pokeName}
+            </h1>
+          </div>
         </div>
-        <div className="row">
-          <h1>{props.pokeName}</h1>
+        <div className="mb-auto p-5">
+          <div>
+            <img
+              style={{ width: "300px", height: "300px" }}
+              src={props.sprites}
+              alt={props.pokeName}
+            />
+          </div>
         </div>
       </div>
-      <div style={{ marginBottom: ".1rem" }}>
-        <h1 id="overlay" style={{ fontFamily: "electroharmonix" }}>
-          {props.pokeName}
-        </h1>
-        <div className="row">
-          <img
-            style={{ width: "450px", height: "45 0px" }}
-            src={props.sprites}
-            alt={props.pokeName}
-          />
-        </div>
-      </div>
-      <div
-        className="d-flex justify-content-between"
-        style={{ marginBottom: "1rem" }}
-      >
-        <Button
-          variant="outline-dark"
-          text="dark"
+      <div className="d-flex justify-content-between">
+        <button
+          style={{
+            backgroundColor: `${background}`,
+            border: "none",
+            padding: "10px",
+            borderRadius: "10px",
+          }}
           onClick={handleShow}
         >
           <TbPokeball></TbPokeball>
-        </Button>
-        <Button
-        id='status'
-          variant="outline-dark"
-          text="dark"
-          onClick={()=>{
-          document.querySelector('#stats').style.display='inline'
-          document.querySelector('#main').style.display='none'
-
-        }}
+        </button>
+        <button
+          id="status"
+          style={{
+            backgroundColor: `${background}`,
+            border: "none",
+            padding: "5px 10px",
+            borderRadius: "10px",
+          }}
+          onClick={() => {
+            document.querySelector("#stats").style.display = "inline";
+            document.querySelector("#main").style.display = "none";
+          }}
         >
           <GrNext></GrNext>
-        </Button>
+        </button>
       </div>
+
       <Modal
         pokeName={props.pokeName}
         flavor={props.flavor}
         show={show}
         handleClose={handleClose}
       />
-    </div>
+    </React.Fragment>
   );
 }
 

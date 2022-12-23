@@ -10,25 +10,16 @@ function Body(props) {
 
   return (
     
-    <div style={{ margin: ".1rem" }}>
      
-            <div>
+            <React.Fragment
+            >
               <div
-              id='body-background'
-                // style={{
-                //   backgroundColor: props.background === "black" ? "gray" : props.background,
-                //   transition: "all 300ms ease",
-                //   borderRadius: "29px",
-                // }}
               >
-                <div
-                  className="d-flex justify-content-center align-items-center"
-                  // style={{
-                  //   backgroundColor: "rgba(0, 0, 0, 0.1)",
-                  //   borderRadius: "29px",
-                  // }}
+                <div className='d-flex justify-content-around'
+                style={{marginBottom: '4rem'}} 
                 >
-                  <div id='main' className='mainn active'>
+
+                  <div id='main' className='mainn active' >
                     {props.currentPage && (
                       <Main
                       flavor={props.flavor}
@@ -42,7 +33,7 @@ function Body(props) {
                       />
                     )}
                   </div>
-                  <div id='stats' className='mainn'>
+                  <div id='stats' className='mainn'  >
                     {props.currentPage && (
                       <Stats
                         pokemon={props.currentPage}
@@ -56,9 +47,9 @@ function Body(props) {
                     )}
                   </div>
                 </div>
+
               </div>
-            </div>
-          </div>
+            </React.Fragment>
   )
 }
 

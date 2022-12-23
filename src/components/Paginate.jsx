@@ -1,12 +1,12 @@
 import { useContext, useState, useEffect } from "react";
-import Button from "react-bootstrap/Button";
-import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { Pokemon } from "./Parent";
-import {BiLeftArrow, BiRightArrow} from 'react-icons/bi'
+import { GrStatusInfo, GrNext, GrPrevious } from "react-icons/gr";
+import { BackgroundColor } from "./Parent";
+
 
 function Paginate(props) {
   const pokemon = useContext(Pokemon)
-
+  const background = useContext(BackgroundColor)
 
 
   // let pokeId = props.paginate.map((pokemon, index) => pokemon.name);
@@ -14,9 +14,9 @@ function Paginate(props) {
   return (
     <div className="d-flex justify-content-around align-items-center">
       <div>
-        <Button variant="outline-dark" onClick={props.decrease}>
-          <BiLeftArrow></BiLeftArrow>
-        </Button>
+        <button onClick={props.decrease}  style={{backgroundColor: `${background}`, border: 'none', padding: '5px 10px', borderRadius: '10px'}}>
+          <GrPrevious/>
+        </button>
       </div>
       <div className="d-flex align-items-center" style={{overflow: 'auto', maxWidth: '40rem'}}>
         {pokemon.filter((poke, id) =>{
@@ -25,8 +25,7 @@ function Paginate(props) {
           .map((id, index) => {
             return (
               <p
-          
-                style={{ borderRadius: "20px", padding: '1rem', }}
+                style={{ margin: '12px', borderRadius: "20px", padding: '10px', backgroundColor: `${background}`}}
                 key={id}
                 onClick={() => props.onIDClick(index+1)}
                 active={id === props.pokeName}
@@ -38,9 +37,9 @@ function Paginate(props) {
       </div>
 
       <div>
-        <Button variant="outline-dark" onClick={props.increase}>
-          <BiRightArrow></BiRightArrow>
-        </Button>
+        <button onClick={props.increase} style={{backgroundColor: `${background}`, border: 'none', padding: '5px 10px', borderRadius: '10px'}}>
+          <GrNext></GrNext>
+        </button>
       </div>
     </div>
   );

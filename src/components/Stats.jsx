@@ -19,15 +19,10 @@ import psychic from "../img/icons/psychic.svg";
 import rock from "../img/icons/rock.svg";
 import steel from "../img/icons/steel.svg";
 import water from "../img/icons/water.svg";
+import React from "react";
 
 function Stats(props) {
-  const container = {
-    // borderLeft: "solid #fcfcf7",
-    padding: "1rem",
-    margin: "1rem",
-    // borderRadius: '20px',
-    // backgroundColor: 'rgba(0,0,0, 0.5)',
-  };
+
 
   const badge = {
     container: {
@@ -49,7 +44,7 @@ function Stats(props) {
   };
 
   return (
-    <div style={container}>
+    <React.Fragment>
       <div>
         <div className="row">
           <h4>
@@ -228,7 +223,7 @@ function Stats(props) {
         <GrPrevious></GrPrevious>
         </Button>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 
