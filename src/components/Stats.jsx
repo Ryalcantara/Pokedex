@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import { GrPrevious, GrStatusUnknown } from "react-icons/gr";
+import { GrPrevious} from "react-icons/gr";
 //types
 import grass from "../img/icons/grass.svg";
 import bug from "../img/icons/bug.svg";
@@ -19,9 +19,12 @@ import psychic from "../img/icons/psychic.svg";
 import rock from "../img/icons/rock.svg";
 import steel from "../img/icons/steel.svg";
 import water from "../img/icons/water.svg";
-import React from "react";
+import React, { useContext } from "react";
+import { BackgroundColor } from "./Parent";
 
 function Stats(props) {
+
+  const background = useContext(BackgroundColor)
 
 
   const badge = {
@@ -210,10 +213,14 @@ function Stats(props) {
         style={{ marginBottom: "1rem" }}
       >
        
-        <Button
+        <button
         id='main-body'
-          variant="outline-dark"
-          text="dark"
+        style={{
+          backgroundColor: `${background}`,
+          border: "none",
+          padding: "5px 10px",
+          borderRadius: "10px",
+        }}
           onClick={()=>{
           document.querySelector('#stats').style.display='none'
           document.querySelector('#main').style.display='inline'
@@ -221,7 +228,7 @@ function Stats(props) {
         }}
         >
         <GrPrevious></GrPrevious>
-        </Button>
+        </button>
       </div>
     </React.Fragment>
   );

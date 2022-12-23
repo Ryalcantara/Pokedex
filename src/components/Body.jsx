@@ -16,7 +16,7 @@ function Body(props) {
               <div
               >
                 <div className='d-flex justify-content-around'
-                style={{marginBottom: '4rem'}} 
+                style={{margin: '2.3rem 0'}} 
                 >
 
                   <div id='main' className='mainn active' >
