@@ -1,0 +1,15 @@
+.topbar-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 30%;
+    padding: 10px 15px;
+}
+
+.topbar-wrapper h1{
+    color: darkslategray;
+}
+
+@media (max-width: 600px) {
+    .topbar-wrapper {
+        grid-template-columns: 1fr;
+    }
+}

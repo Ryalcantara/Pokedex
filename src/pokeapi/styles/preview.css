@@ -1,0 +1,6 @@
+.view-wrapper{
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
+    transition: right .5s ease-out;
+}
+

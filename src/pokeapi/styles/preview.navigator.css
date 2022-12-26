@@ -1,0 +1,30 @@
+.navigator-wrapper {
+    height: 70px;
+    display: flex;
+    overflow-y: auto;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 10px 15px;
+}
+
+.navigator-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.navigator-wrapper .nav-item {
+    border-radius: 8px;
+}
+
+.nav-item #nav-link {
+    border-radius: 8px;
+    padding: 8px 18px;
+    height: inherit;
+    width: inherit;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.nav-item #nav-link:hover {
+    background-color: rgba(154, 154, 154, 0.3);
+}

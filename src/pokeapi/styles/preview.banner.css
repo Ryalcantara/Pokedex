@@ -1,0 +1,59 @@
+.banner-wrapper{
+    position: relative;
+    height: 30vh;
+}
+.banner-wrapper .poke-balls {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    opacity: .8;
+}
+.poke-balls #poke-ball-1{
+    position: absolute;
+    top: -100px;
+    left: -150px;
+    scale: .3;
+    transform: rotate(45deg);
+    transform-origin: center;
+}
+.poke-balls #poke-ball-2{
+    position: absolute;
+    top: -25px;
+    scale: .8;
+    right: -150px;
+}
+.banner-wrapper .subdetails {
+    z-index: 2;
+    background-color: rgba(202, 202, 202, 0.5);
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.subdetails .details {
+    padding: 0 15px;
+}
+
+.details .japanese-label {
+    font-size: 1.8rem;
+    font-weight: bolder;
+}
+.details .pokemon-id {
+    font-size: 5rem;
+    font-weight: bolder;
+    opacity: .5;
+}
+.subdetails img {
+    position: absolute;
+    height: auto;
+    max-height: 200px; /**mark this for media query changes**/
+    width: auto;
+    bottom: -25px;
+    right: 5%;
+}

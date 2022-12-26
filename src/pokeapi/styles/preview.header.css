@@ -1,0 +1,29 @@
+.view-header .view-header-sub{
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+.view-header .view-pokemon-name{
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.view-header .view-back-button {
+    display: none;
+    height: inherit;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-weight: bolder;
+    border-radius: 8px;
+}
+.view-header .view-back-button:hover {
+    background-color: rgba(202, 202, 202, 0.5);
+}
+
+@media (max-width: 600px) {
+    .view-header .view-back-button {
+        display: block;
+    }
+}
