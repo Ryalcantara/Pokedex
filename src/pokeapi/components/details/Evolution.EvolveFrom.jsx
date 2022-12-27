@@ -12,27 +12,28 @@ export default ({ from, to }) => {
         gap: "15px",
       }}
     >
-      <img
-        src={from?.image}
-        style={{
-          maxHeight: "150px",
-          backgroundColor: "whitesmoke",
-          borderRadius: "25px",
-          objectFit: "contain",
-        }}
-        title={from?.name}
-      />
+      <BuildImage src={from?.image} name={from?.name} />
       <span style={{ fontSize: "1.5em", fontWeight: "bolder" }}>-&gt;</span>
-      <img
-        src={to?.image}
-        style={{
-          maxHeight: "150px",
-          background: `whitesmoke`,
-          borderRadius: "25px",
-          objectFit: "contain",
-        }}
-        title={to?.name}
-      />
+      <BuildImage src={to?.image} name={to?.name} />
     </div>
   );
 };
+
+function BuildImage({ src, name }) {
+  return (
+    <div>
+      <div className="evolution-item">
+        <img
+          src={src}
+          alt={name}
+          loading={"lazy"}
+          className="evolution-item-image"
+          placeholder="Loading Pokemon"
+        />
+        <div className="evolution-item-name" style={{ textAlign: "center" }}>
+          {name}
+        </div>
+      </div>
+    </div>
+  );
+}

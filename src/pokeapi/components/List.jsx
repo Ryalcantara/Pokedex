@@ -105,7 +105,13 @@ function ListItem({ name, url, setShowPokemon }) {
           <div>{pokename}</div>
         </div>
       </div>
-      <img src={image} alt={`artwork-${pokename}`} className="media" />
+      <img
+        src={image}
+        alt={`artwork-${pokename}`}
+        className="media"
+        loading="lazy"
+        placeholder={name}
+      />
       {name === pokemon?.name ? (
         <div
           className="list-item-active"

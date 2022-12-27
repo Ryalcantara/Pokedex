@@ -21,7 +21,9 @@ export default ({ url, setShowPokemon, showPokemon }) => {
   return (
     <div
       className="view-wrapper"
-      style={{ right: width <= 600 && showPokemon ? 0 : "-100%" }}
+      style={{
+        right: width <= 600 && showPokemon ? 0 : "-100%",
+      }}
     >
       <Header data={data} setShowPokemon={setShowPokemon} species={species} />
       <Banner data={data} species={species} />

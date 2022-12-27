@@ -57,7 +57,7 @@ export default ({ data, species }) => {
             <div
               style={{ textAlign: "center", fontSize: "1.3em", color: "gray" }}
             >
-              Evolved From
+              Evolution
             </div>
             <br />
             <EvolveFrom
@@ -73,7 +73,7 @@ export default ({ data, species }) => {
           </div>
         ) : (
           <div style={{ textAlign: "center", color: "lightgray" }}>
-            no previous evolution form
+            No Previous Evolution Form
           </div>
         )}
         {evolution?.chain?.length > 0 ? (
@@ -89,29 +89,10 @@ export default ({ data, species }) => {
           </>
         ) : (
           <div style={{ textAlign: "center", color: "lightgray" }}>
-            no previous evolution form
+            No Evolution Chain Form
           </div>
         )}
       </div>
     </>
   );
 };
-
-function RenderImage({ url }) {
-  const [data, setData] = useState();
-  const init = useCallback(
-    async (url) => {
-      const json = await (await fetch(url)).json();
-      setData({
-        name: json?.name,
-        image: json?.sprites?.other["official-artwork"]?.front_default,
-      });
-    },
-    [url]
-  );
-
-  useEffect(() => {
-    init(url);
-  }, [url]);
-  return <img src={data?.image} />;
-}

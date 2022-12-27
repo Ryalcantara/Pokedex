@@ -75,37 +75,31 @@ function RenderMoveItem({ name, url }) {
       });
   }, [name, url]);
   return (
-    <div
-      style={{
-        backgroundColor: "lightgray",
-        borderRadius: "8px",
-        position: "relative",
-      }}
-    >
-      <div
-        style={{
-          backgroundColor: "rgba(255, 255, 255, 0.5)",
-          padding: "10px",
-          borderRadius: "8px",
-          height: "100%",
-        }}
-      >
-        <div
-          style={{
-            fontSize: "1.5em",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <span>{move?.name}</span>
+    <div style={{}} className="move-details-item">
+      <div style={{}} className="move-details-item-wrapper">
+        <div className="move-details-header" style={{}}>
+          <span style={{ textTransform: "capitalize" }}>{move?.name}</span>
           <span title="priority">{move?.priority}</span>
         </div>
-        <div style={{ color: "gray" }}>{move?.description}</div>
-        <div>TARGET: {move?.target}</div>
-        <div>POWER: {move?.power}</div>
-        <div>PP: {move?.pp}</div>
-        <div>ACCURACY: {move?.accuracy}</div>
+        <hr />
+        <div>{move?.description}</div>
+        <hr />
+        <div className="move-details-value">
+          <span style={{ fontWeight: "bold" }}>Target</span>
+          <span>{move?.target}</span>
+        </div>
+        <div className="move-details-value">
+          <span style={{ fontWeight: "bold" }}>Power</span>{" "}
+          <span>{move?.power}</span>
+        </div>
+        <div className="move-details-value">
+          <span style={{ fontWeight: "bold" }}>PP</span>
+          <span>{move?.pp}</span>
+        </div>
+        <div className="move-details-value">
+          <span style={{ fontWeight: "bold" }}>Accuracy</span>
+          <span>{move?.accuracy ? `${move?.accuracy}%` : 0}</span>
+        </div>
       </div>
       {move ? null : (
         <div
@@ -113,7 +107,7 @@ function RenderMoveItem({ name, url }) {
             position: "absolute",
             top: 0,
             left: 0,
-            height: "auto",
+            height: "100%",
             width: "100%",
             backdropFilter: "blur(15px)",
             borderRadius: "8px",

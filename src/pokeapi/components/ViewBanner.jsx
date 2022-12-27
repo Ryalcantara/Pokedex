@@ -51,7 +51,16 @@ export default ({ data, species }) => {
               {
                 species?.names?.find((item) => item.language.name === "ja")
                   ?.name
-              }
+              }{" "}
+              <span style={{ fontSize: "75%", opacity: 0.8 }}>
+                (
+                {
+                  species?.names?.find(
+                    (item) => item.language.name === "roomaji"
+                  )?.name
+                }
+                )
+              </span>
             </p>
             <p
               className="pokemon-id"
@@ -69,6 +78,7 @@ export default ({ data, species }) => {
           <img
             src={data?.sprites?.other["official-artwork"]?.front_default}
             alt={data?.name}
+            loading={"lazy"}
           />
         </div>
       </div>

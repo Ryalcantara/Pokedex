@@ -16,7 +16,9 @@ export default ({ data, species }) => {
         weight: data?.weight,
         description:
           species?.flavor_text_entries &&
-          species?.flavor_text_entries[21]?.flavor_text,
+          species?.flavor_text_entries?.find(
+            (key) => key.language?.name === "en"
+          )?.flavor_text,
         type: data?.types && data?.types?.map((item) => item.type.name),
         species: {
           shape: species?.shape?.name,
@@ -48,42 +50,42 @@ export default ({ data, species }) => {
   return (
     <div style={{ position: "relative" }}>
       <BuildItem name="ID">#{info?.id}</BuildItem>
-      <BuildItem name="NAME">{info?.name}</BuildItem>
-      <BuildItem name="DESCRIPTION">{info?.description}</BuildItem>
-      <BuildItem name="TYPE">{info?.type?.join(",")}</BuildItem>
-      <BuildItem name="HEIGHT">
+      <BuildItem name="Name">{info?.name}</BuildItem>
+      <BuildItem name="Description">{info?.description}</BuildItem>
+      <BuildItem name="Type">{info?.type?.join(",")}</BuildItem>
+      <BuildItem name="Height">
         {info?.height && info?.height / 10} m. (
         {info?.height && (info?.height / 3.048).toFixed(2)} ft.)
       </BuildItem>
-      <BuildItem name="WEIGHT">
+      <BuildItem name="Weight">
         {info?.weight && info?.weight / 10} kg. (
         {info?.weight && (info?.weight / 4.536).toFixed(2)} lb.)
       </BuildItem>
       <br />
       <h5>SPECIES</h5>
-      <BuildItem name="HABITAT">{info?.species?.habitat}</BuildItem>
-      <BuildItem name="SHAPE">{info?.species?.shape}</BuildItem>
-      <BuildItem name="EGG GROUP">
+      <BuildItem name="Habitat">{info?.species?.habitat}</BuildItem>
+      <BuildItem name="Shape">{info?.species?.shape}</BuildItem>
+      <BuildItem name="Egg Group">
         {info?.species?.egg_groups?.join(",")}
       </BuildItem>
-      <BuildItem name="CAPTURE RATE">
+      <BuildItem name="Capture Rate">
         {info?.species?.capture_rate &&
           ((info?.species?.capture_rate / 255) * 100).toFixed(1)}
         % Chance
       </BuildItem>
-      <BuildItem name="LOCATION">
+      <BuildItem name="Location">
         {info?.location_area?.length > 0
           ? info?.location_area
               ?.map((item) => item.location_area.name)
               ?.join(",")
           : "N/A"}
       </BuildItem>
-      <BuildItem name="VARIETIES">
+      <BuildItem name="Varieties">
         {info?.species?.varieties?.map((item) => item.name)?.join(",")}
       </BuildItem>
-      <BuildItem name="BABY">{info?.baby ? "YES" : "NO"}</BuildItem>
-      <BuildItem name="MYTHICAL">{info?.mythical ? "YES" : "NO"}</BuildItem>
-      <BuildItem name="LEGENDARY">{info?.legendary ? "YES" : "NO"}</BuildItem>
+      <BuildItem name="Baby">{info?.baby ? "YES" : "NO"}</BuildItem>
+      <BuildItem name="Mythical">{info?.mythical ? "YES" : "NO"}</BuildItem>
+      <BuildItem name="Legendary">{info?.legendary ? "YES" : "NO"}</BuildItem>
       {!info ? (
         <div
           style={{
@@ -107,19 +109,9 @@ export default ({ data, species }) => {
 
 function BuildItem(props) {
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "30% 1fr",
-        alignItems: "flex-start",
-        padding: "5px 0px",
-        gap: "5px",
-      }}
-    >
-      <span style={{ color: "gray", wordBreak: "break-word" }}>
-        {props.name}
-      </span>
-      <span>{props.children}</span>
+    <div className="info-wrapper">
+      <span className="info-wrapper-label">{props.name}</span>
+      <span className="info-wrapper-data">{props.children}</span>
     </div>
   );
 }

@@ -9,7 +9,16 @@ export default ({ data }) => {
         if (item instanceof Array) {
           return (
             <div key={idx}>
-              <div style={{ textAlign: "center" }}>evolves to</div>
+              <div
+                style={{
+                  textAlign: "center",
+                  padding: "10px",
+                  marginBottom: "10px",
+                  color: "lightgray",
+                }}
+              >
+                (Evolve To)
+              </div>
               <div
                 style={{
                   display: "flex",
@@ -62,6 +71,19 @@ function RenderImage({ name, url }) {
       );
   }, [name, url]);
   return (
-    <img src={fetched} title={name} alt={name} style={{ maxHeight: "200px" }} />
+    <div>
+      <div className="evolution-item">
+        <img
+          src={fetched}
+          alt={name}
+          loading={"lazy"}
+          className="evolution-item-image"
+          placeholder="Loading Pokemon"
+        />
+        <div className="evolution-item-name" style={{ textAlign: "center" }}>
+          {name}
+        </div>
+      </div>
+    </div>
   );
 }

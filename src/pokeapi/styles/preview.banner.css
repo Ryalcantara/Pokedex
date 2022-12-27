@@ -2,6 +2,7 @@
     position: relative;
     height: 30vh;
 }
+
 .banner-wrapper .poke-balls {
     z-index: 1;
     position: absolute;
@@ -56,4 +57,13 @@
     width: auto;
     bottom: -25px;
     right: 5%;
+}
+
+@media (max-width: 600px) {
+    .banner-wrapper{
+        border-radius: 0px;
+    }
+    .details .pokemon-id {
+        font-size: 4rem;
+    }
 }

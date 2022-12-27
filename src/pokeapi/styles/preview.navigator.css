@@ -5,6 +5,7 @@
     align-items: flex-end;
     gap: 10px;
     padding: 10px 15px;
+    border-radius: 15px 15px 0 0;
 }
 
 .navigator-wrapper::-webkit-scrollbar {
@@ -12,11 +13,11 @@
 }
 
 .navigator-wrapper .nav-item {
-    border-radius: 8px;
+    border-radius: 25px;
 }
 
 .nav-item #nav-link {
-    border-radius: 8px;
+    border-radius: 25px;
     padding: 8px 18px;
     height: inherit;
     width: inherit;

@@ -32,29 +32,29 @@ export default ({ data, species }) => {
         maxValue={252}
       />
       <BuildStat
-        name={"ATTACK"}
+        name={"Attack"}
         value={info?.stats?.find((key) => key.name === "attack")?.value}
         maxValue={252}
       />
       <BuildStat
-        name={"DEFENSE"}
+        name={"Defence"}
         value={info?.stats?.find((key) => key.name === "defense")?.value}
         maxValue={252}
       />
       <BuildStat
-        name={"SPECIAL ATTACK"}
+        name={"Sp. Attack"}
         value={info?.stats?.find((key) => key.name === "special-attack")?.value}
         maxValue={252}
       />
       <BuildStat
-        name={"SPECIAL DEFENSE"}
+        name={"Sp. Defence"}
         value={
           info?.stats?.find((key) => key.name === "special-defense")?.value
         }
         maxValue={252}
       />
       <BuildStat
-        name={"SPEED"}
+        name={"Speed"}
         value={info?.stats?.find((key) => key.name === "speed")?.value}
         maxValue={252}
       />
@@ -98,6 +98,7 @@ function BuildStat({ name, value, maxValue }) {
 
   return (
     <div
+      className="stat-item"
       style={{
         display: "grid",
         gap: "10px",
@@ -108,25 +109,14 @@ function BuildStat({ name, value, maxValue }) {
         padding: "10px 0",
       }}
     >
-      <div>{name}</div>
-      <div>{value}</div>
-      <div
-        style={{
-          backgroundColor: "lightgray",
-          height: "10px",
-          width: "100%",
-          alignSelf: "center",
-          borderRadius: "8px",
-        }}
-      >
+      <div className="stat-name">{name}</div>
+      <div className="stat-data">{value}</div>
+      <div className="stat-progress-wrapper">
         <div
+          className="stat-progress-wrapper-progress"
           style={{
-            borderRadius: "8px 0 0 8px",
             backgroundColor: getColor(percentage),
-            opacity: 0.7,
-            height: "inherit",
             width: `${percentage}%`,
-            transform: "width 1s ease-out",
           }}
         ></div>
       </div>

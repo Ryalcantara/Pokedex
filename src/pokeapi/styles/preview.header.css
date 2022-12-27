@@ -6,7 +6,8 @@
     gap: 15px;
 }
 .view-header .view-pokemon-name{
-    font-size: 1.8rem;
+    text-transform: capitalize;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
@@ -25,5 +26,8 @@
 @media (max-width: 600px) {
     .view-header .view-back-button {
         display: block;
+    }
+    .view-header .view-pokemon-name {
+        font-size: .8rem;
     }
 }
