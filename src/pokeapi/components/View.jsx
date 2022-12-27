@@ -17,6 +17,22 @@ export default ({ url, setShowPokemon, showPokemon }) => {
       setSpecies(res.species);
     });
     setActiveDetails(0);
+
+    function handlePopState() {
+      setShowPokemon(false);
+    }
+
+    function onKeyEscClose(event) {
+      if (event.keyCode === 8 || event.keyCode === 27) {
+        setShowPokemon(false);
+      }
+    }
+    window.addEventListener("popstate", handlePopState);
+    window.addEventListener("keydown", onKeyEscClose);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+      window.removeEventListener("keydown", onKeyEscClose);
+    };
   }, [url]);
   return (
     <div

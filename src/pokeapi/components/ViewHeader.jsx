@@ -30,6 +30,7 @@ export default ({ data, setShowPokemon, species }) => {
                 : "white",
             }}
             onClick={() => setShowPokemon(false)}
+            title="Press Esc Or Backspace To Close"
           >
             <span>&lt;-</span>
           </div>
